@@ -1,29 +1,73 @@
 {
 	"Winghaus": {
-		"address": "Vinohradska 1215/32",
-		"distance": 600,
-		"vegetarian": false,
-		"vegan": false,
-		"kosher": false,
-		"gluten-free": true,
-		"raw-food": false,
-		"price": "CZK",
-		"cousine": "fast food",
-		"menu": {
-			"1 Wing": 100,
-			"2 Wings": 150
-		},
-		"alkohol": true,
-		"star-rating": 4.5,
-		"opening-hours": {
-			"Monday": "11AM-10PM",
-			"Tuesday": "11AM-10.30PM",
-			"Wednesday": "11AM-10.30PM",
-			"Thursday": "11AM-10.30PM",
-			"Friday": "11AM-11PM",
-			"Saturday": "11AM-11PM",
-			"Sunday": "12AM-10PM"
-		},
-		"recommendation": 0
-	}
+				"address": "Vinohradska 1215/32",
+				"distance": 600,
+				"diets": {
+						"vegetarian": false,
+						"vegan": false,
+						"kosher": false,
+						"gluten-free": true,
+						"raw-food": false
+						},
+		
+				"price": "CZK",
+				"cousine": "fast food",
+				"menu": {
+						"1 Wing": 100,
+						"2 Wings": 150
+						},
+				"alkohol": true,
+				"star-rating": 4.5,
+				"opening-hours": {
+								"Monday": "11AM-10PM",
+								"Tuesday": "11AM-10.30PM",
+								"Wednesday": "11AM-10.30PM",
+								"Thursday": "11AM-10.30PM",
+								"Friday": "11AM-11PM",
+								"Saturday": "11AM-11PM",
+								"Sunday": "12AM-10PM"
+								},
+				"recommendation": 0
+				}
+}
+
+{
+	"YAMATO": {
+				"address": "U kanalky 14",
+				"distance": 400,
+				"diets": {
+						"vegetarian": true,
+						"vegan": false,
+						"kosher": false,
+						"gluten-free": true,
+						"raw-food": true
+						},
+		
+				"price": "CZK/CZK/CZK",
+				"cousine": "japanese",
+				"menu": {
+						"Ohiru teishoku": 320,
+						"Sakana teishoku": 450,
+						"Sushi teishoku": 530,
+						"Kaisen don": 580,
+						"Maguro zuke don": 680,
+						"Sashimi to tempura teishoku": 480,
+						"Toriniku to tempura teishoku": 470,
+						"Gyuniku to tempura teishoku": 530,
+						"Toriniku to sashimi teishoku": 530,
+						"Gyuniku to sashimi teishoku": 590
+						},
+				"alkohol": true,
+				"star-rating": 4.5,
+				"opening-hours": {
+								"Monday": "12-3PM, 5:30-11PM",
+								"Tuesday": "12-3PM, 5:30-11PM",
+								"Wednesday": "12-3PM, 5:30-11PM",
+								"Thursday": "12-3PM, 5:30-11PM",
+								"Friday": "12-3PM, 5:30-11PM",
+								"Saturday": "5:30-11PM",
+								"Sunday": "closed"
+								},
+				"recommendation": 0
+				}
 }
