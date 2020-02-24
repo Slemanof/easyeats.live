@@ -2,13 +2,15 @@
 	"Winghaus": {
 		"address": "Vinohradska 1215/32",
 		"distance": 600,
-		"vegetarian": false,
-		"vegan": false,
-		"kosher": false,
-		"gluten-free": true,
-		"raw-food": false,
+		"cuisine-type": {
+			"vegetarian": false,
+			"vegan": false,
+			"kosher": false,
+			"gluten-free": true,
+			"raw-food": false
+		},
 		"price": "CZK",
-		"cousine": "fast food",
+		"cuisine": "fast food",
 		"menu": {
 			"1 Wing": 100,
 			"2 Wings": 150
