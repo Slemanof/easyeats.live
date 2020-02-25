@@ -13,8 +13,17 @@
 		"price": "CZK",
 		"cousine": "fast food",
 		"menu": {
-			"1 Wing": 100,
-			"2 Wings": 150
+			"10pcs /2 sauces": 149,
+			"15pcs /2 sauces": 195,
+			"20pcs /3 sauces": 250,
+			"30 pcs /3 sauces": 369,
+			"50 pcs /4 sauces" : 559,
+			"75 pcs /4 sauces": 859,
+			"100 pcs /4 sauces": 999,
+			"8 pcs Combo":159,
+			"10 pcs Combo":179,
+			"12 pcs Combo" :199
+
 		},
 		"alkohol": true,
 		"star-rating": 4.5,
