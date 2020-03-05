@@ -11,7 +11,7 @@ restaurants__html = soup.find_all(
 restaurant_type_pattern = r"lemon--a__373c0__IEZFH link__373c0__1G70M link-color--inherit__373c0__3dzpk link-size--default__373c0__7tls6\" href=\".*?\" rel=\"\" role=\".*?\">.*?<"
 restaurant_name_link_pattern = r"lemon--a__373c0__IEZFH link__373c0__1G70M link-color--inherit__373c0__3dzpk link-size--inherit__373c0__1VFlE\" href=\".*?\" name=\".*?\""
 restaurant_name_pattern = r'name=\".*?\"'
-with open('/home/Basurman/restaurant_recommender_2001/restaurant_dataset_yelp.csv', mode='w') as csv_file:
+with open('/home/Basurman/restaurant_recommender_2001/restaurant_dataset_yelp.csv', mode='w') as csv_file: #A path should be modified according to your file location
     fieldnames = ['rest_name', 'rest_star']
     writer = csv.DictWriter(csv_file, fieldnames=fieldnames)
     for restaurant in restaurants__html:
