@@ -14,7 +14,8 @@ restaurant_price_pattern = r"\"lemon--span__373c0__3997G text__373c0__2Kxyz pric
 restaurant_name_pattern = r'name=\".*?\"'
 restaurant_price_pattern = r"\"lemon--span__373c0__3997G text__373c0__2Kxyz priceRange__373c0__2DY87 text-color--black-extra-light__373c0__2OyzO text-align--left__373c0__2XGa- text-bullet--after__373c0__3fS1Z\">.*?<"
 restaurant_address_pattern = r"emon--span__373c0__3997G raw__373c0__3rcx7\">.*?<"
-with open('/home/Basurman/restaurant_recommender_2001/restaurant_dataset_yelp.csv', mode='w') as csv_file: # A path should be modified according to your file location
+# A path should be modified according to your file location
+with open('/home/Basurman/restaurant_recommender_2001/restaurant_dataset_yelp.csv', mode='w') as csv_file:
     fieldnames = ['rest_name', 'rest_star', 'vegetarian', 'price', 'address']
     writer = csv.DictWriter(csv_file, fieldnames=fieldnames)
     writer.writeheader()
