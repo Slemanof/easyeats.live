@@ -16,6 +16,7 @@ restaurant_price_pattern = r"\"lemon--span__373c0__3997G text__373c0__2Kxyz pric
 with open('/home/Basurman/restaurant_recommender_2001/restaurant_dataset_yelp.csv', mode='w') as csv_file: #A path should be modified according to your file location
     fieldnames = ['rest_name', 'rest_star','vegetarian', 'price']
     writer = csv.DictWriter(csv_file, fieldnames=fieldnames)
+    writer.writeheader()
     for restaurant in restaurants__html:
         if(['target="">Památky<'] in [re.findall(r"target=\"\">.*?<", name) for name in ((re.findall(restaurant_type_pattern, str(restaurant))))]):
             continue
@@ -25,6 +26,5 @@ with open('/home/Basurman/restaurant_recommender_2001/restaurant_dataset_yelp.cs
                 veg = True
             name_link = re.findall(
                 restaurant_name_link_pattern, str(restaurant))[0]
-            writer.writeheader()
             writer.writerow(
                 {'rest_name': ((re.findall(restaurant_name_pattern, name_link))[0])[6:-1], 'rest_star': ((re.findall(r'\d\.?\d? hvězdičkové hodnocení', str(restaurant)))[0])[:-22], 'vegetarian':veg, 'price':((re.findall(restaurant_price_pattern,str(restaurant)))[0])[180:-1]})
