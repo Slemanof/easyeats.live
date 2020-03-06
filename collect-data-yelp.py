@@ -13,18 +13,22 @@ restaurant_name_link_pattern = r"lemon--a__373c0__IEZFH link__373c0__1G70M link-
 restaurant_price_pattern = r"\"lemon--span__373c0__3997G text__373c0__2Kxyz priceRange__373c0__2DY87 text-color--black-extra-light__373c0__2OyzO text-align--left__373c0__2XGa- text-bullet--after__373c0__3fS1Z\">.*?<"
 restaurant_name_pattern = r'name=\".*?\"'
 restaurant_price_pattern = r"\"lemon--span__373c0__3997G text__373c0__2Kxyz priceRange__373c0__2DY87 text-color--black-extra-light__373c0__2OyzO text-align--left__373c0__2XGa- text-bullet--after__373c0__3fS1Z\">.*?<"
-with open('/home/Basurman/restaurant_recommender_2001/restaurant_dataset_yelp.csv', mode='w') as csv_file: #A path should be modified according to your file location
-    fieldnames = ['rest_name', 'rest_star','vegetarian', 'price']
+restaurant_address_pattern = r"emon--span__373c0__3997G raw__373c0__3rcx7\">.*?<"
+# <span class="lemon--span__373c0__3997G raw__373c0__3rcx7">Templová 7</span>
+# <span class="lemon--span__373c0__3997G raw__373c0__3rcx7">Nachází se v <a href="/biz/alcron-hotel-prague-praha">Alcron Hotel Prague</a></span>
+# A path should be modified according to your file location
+with open('/home/Basurman/restaurant_recommender_2001/restaurant_dataset_yelp.csv', mode='w') as csv_file:
+    fieldnames = ['rest_name', 'rest_star', 'vegetarian', 'price', 'address']
     writer = csv.DictWriter(csv_file, fieldnames=fieldnames)
     writer.writeheader()
     for restaurant in restaurants__html:
         if(['target="">Památky<'] in [re.findall(r"target=\"\">.*?<", name) for name in ((re.findall(restaurant_type_pattern, str(restaurant))))]):
             continue
         else:
-            veg=False
+            veg = False
             if (['target="">Vegetariánská kuchyně<'] in [re.findall(r"target=\"\">.*?<", name) for name in ((re.findall(restaurant_type_pattern, str(restaurant))))]):
                 veg = True
             name_link = re.findall(
                 restaurant_name_link_pattern, str(restaurant))[0]
             writer.writerow(
-                {'rest_name': ((re.findall(restaurant_name_pattern, name_link))[0])[6:-1], 'rest_star': ((re.findall(r'\d\.?\d? hvězdičkové hodnocení', str(restaurant)))[0])[:-22], 'vegetarian':veg, 'price':((re.findall(restaurant_price_pattern,str(restaurant)))[0])[180:-1]})
+                {'rest_name': ((re.findall(restaurant_name_pattern, name_link))[0])[6:-1], 'rest_star': ((re.findall(r'\d\.?\d? hvězdičkové hodnocení', str(restaurant)))[0])[:-22], 'vegetarian': veg, 'price': ((re.findall(restaurant_price_pattern, str(restaurant)))[0])[180:-1], 'address': ((re.findall(restaurant_address_pattern, str(restaurant)))[0])[44:-1]})
