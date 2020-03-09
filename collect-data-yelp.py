@@ -29,4 +29,4 @@ with open('/home/Basurman/restaurant_recommender_2001/restaurant_dataset_yelp.cs
             name_link = re.findall(
                 restaurant_name_link_pattern, str(restaurant))[0]
             writer.writerow(
-                {'rest_name': ((re.findall(restaurant_name_pattern, name_link))[0])[6:-1], 'rest_star': ((re.findall(r'\d\.?\d? hvězdičkové hodnocení', str(restaurant)))[0])[:-22], 'vegetarian': veg, 'price': ((re.findall(restaurant_price_pattern, str(restaurant)))[0])[180:-1], 'address': ((re.findall(restaurant_address_pattern, str(restaurant)))[0])[44:-1]})
+                {'rest_name': (((re.findall(restaurant_name_pattern, name_link))[0])[6:-1]).replace("&amp;", "&"), 'rest_star': ((re.findall(r'\d\.?\d? hvězdičkové hodnocení', str(restaurant)))[0])[:-22], 'vegetarian': veg, 'price': ((re.findall(restaurant_price_pattern, str(restaurant)))[0])[180:-1], 'address': ((re.findall(restaurant_address_pattern, str(restaurant)))[0])[44:-1]})
