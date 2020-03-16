@@ -36,19 +36,6 @@ def get_location_details(query):
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
 def get_restaurants(ent_id, ent_type):
 
     headers = {
