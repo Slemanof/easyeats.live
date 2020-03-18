@@ -51,3 +51,8 @@ df = pandas.DataFrame(list_restaurants)
 df.to_csv("zomato_restaurants.csv")
 
 df
+
+
+caf = set(['Kavárna'])
+is_cafe = caf.issubset
+df[df.cuisines.map(is_cafe)]
