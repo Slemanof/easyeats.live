@@ -66,3 +66,6 @@
 - [ ] Ensure the framework and all other software is running up to date version of the system with all approved patches installed.
 - [ ] Restrict access to files, folders etc. to the least priviliges as possible.
 - [ ] Remove all unnecessary files(they might become vulnerability in system). 
+
+##### SYSTEM BACKUP
+- [ ] The server will have a backup in case of a failure or in case of unknown threats, so it can be deployed within moments and serve the users again.  
