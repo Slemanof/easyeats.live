@@ -1,4 +1,4 @@
-pandas==1.0.1
+pandas==0.24.2
 geopy==1.21.0
 requests==2.22.0
 beautifulsoup4==4.8.2
