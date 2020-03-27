@@ -29,17 +29,23 @@ def check_cuisines(cuisine):
         cursor.execute(
             "INSERT INTO cuisines (name) VALUES (\"" + cuisine+"\")")
     except mysql.connector.errors.IntegrityError:
-        print("works")
         return
     cnx.commit()
     return
 
 
-check_cuisines("Bulgar")
+# check_cuisines("Bulgar")
 
 
 def cuisines(res_id, res_cuisine):
     cuisines_list = res_cuisine.split(",")
+    cnx = mysql.connector.connect(user='script', password='LetMeIn:)123',
+                                  host='127.0.0.1',
+                                  database='restaurant_recommender')
+    cursor = cnx.cursor()
     for cuisine in cuisines_list:
         check_cuisines(cuisine)
+        add_restaurant_cuisine =("INSERT INTO restaurant_cuisine (restaurant_id, cuisine_id) VALUES ("+res_id+",(SELECT id FROM cuisines WHERE name = \""+res_cuisine+"\"))")
+        cursor.execute(add_restaurant_cuisine)
+        cnx.commit()
     return
