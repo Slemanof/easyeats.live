@@ -22,6 +22,6 @@ CREATE TABLE `cuisines` (
 
 CREATE TABLE `restaurant_cuisine` (
   `restaurant_id` int,
-  `cuisine_id` int
+  `cuisine_id` int,
+  PRIMARY KEY(`restaurant_id`, `cuisine_id`)
 );
-INSERT INTO restaurant ( id, name) VALUES (1, "Test")
