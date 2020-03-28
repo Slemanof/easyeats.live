@@ -45,7 +45,9 @@ def cuisines(res_id, res_cuisine):
     cursor = cnx.cursor()
     for cuisine in cuisines_list:
         check_cuisines(cuisine)
-        add_restaurant_cuisine =("INSERT INTO restaurant_cuisine (restaurant_id, cuisine_id) VALUES ("+res_id+",(SELECT id FROM cuisines WHERE name = \""+res_cuisine+"\"))")
+        add_restaurant_cuisine =("INSERT INTO restaurant_cuisine (restaurant_id, cuisine_id) VALUES ("+str(res_id)+",(SELECT id FROM cuisines WHERE name = \""+res_cuisine+"\"))")
         cursor.execute(add_restaurant_cuisine)
         cnx.commit()
     return
+
+cuisines(1, "Mongol")
