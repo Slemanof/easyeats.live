@@ -9,7 +9,7 @@ CREATE TABLE `restaurant` (
   `vegetarian` boolean,
   `credit_card` boolean,
   `gluten_free` boolean,
-  `Takeaway` boolean,
+  `takeaway` boolean,
   `phone_num1` int,
   `phone_num2` int,
   `menu` json
