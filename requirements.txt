@@ -1,3 +1,3 @@
-pandas
-geopy==1.21.0
 requests==2.22.0
+geopy==1.21.0
+mysql_connector_repackaged==0.3.1
