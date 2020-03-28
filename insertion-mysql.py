@@ -54,5 +54,5 @@ def insert(res_id, res_name, res_address, res_rating, res_cost, res_cuisine, res
     return
 
 
-insert(21, 'Test21', "Na pankraci", 4.5, 400,
-       "Czech, Bulgar, German", "foodlink", 1, 0, 0,0, 0, "880055", 0, "{\"status\": \"graduated\",\"DOB\": \"1968-08-31\",\"enroll_semestr\": \"1998SN\",\"nationality\": \"American\"}")
+# insert(21, 'Test21', "Na pankraci", 4.5, 400,
+#        "Czech, Bulgar, German", "foodlink", 1, 0, 0,0, 0, "880055", 0, "{\"status\": \"graduated\",\"DOB\": \"1968-08-31\",\"enroll_semestr\": \"1998SN\",\"nationality\": \"American\"}")
