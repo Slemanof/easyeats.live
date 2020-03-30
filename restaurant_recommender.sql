@@ -23,7 +23,7 @@ CREATE TABLE `cuisines` (
 CREATE TABLE `restaurant_cuisine` (
   `restaurant_id` int,
   `cuisine_id` int,
-  PRIMARY KEY(`restaurant_id`, `cuisine_id`)
+  PRIMARY KEY(`restaurant_id`, `cuisine_id`),
   FOREIGN KEY (restaurant_id) REFERENCES restaurant(id),
   FOREIGN KEY (cuisine_id) REFERENCES cuisines(id)
 );
