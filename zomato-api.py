@@ -1,5 +1,6 @@
 import requests
 import geopy.distance
+import json
 
 zomato_api = '6bc71cad65004dd66dbb46d16667630a'
 
@@ -56,6 +57,7 @@ def get_restaurants(ent_id, ent_type):
 
 
 
+
 def get_menu(restaurant_id):
     headers = {
         'Accept': 'application/json',
@@ -65,8 +67,13 @@ def get_menu(restaurant_id):
 
     url1 = url + restaurant_id
     response = requests.get(url1, headers=headers)
-    print(response.json())
+    
+    data = response.json()
 
+    with open('daily_menu_file.json', 'a') as f:
+        json.dump(data, f)
+
+    print(data)
 
 
 
