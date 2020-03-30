@@ -7,6 +7,7 @@ zomato_api = '6bc71cad65004dd66dbb46d16667630a'
 
 user_coordinates = []
 
+
 def get_location_details(query):
 
     headers = {
@@ -17,7 +18,8 @@ def get_location_details(query):
         ('query', query),
     )
 
-    response = requests.get('https://developers.zomato.com/api/v2.1/locations', headers=headers, params=params)
+    response = requests.get(
+        'https://developers.zomato.com/api/v2.1/locations', headers=headers, params=params)
     data = response.json()
 
     for loc in data['location_suggestions']:
@@ -30,10 +32,7 @@ def get_location_details(query):
     user_coordinates.append(actual_latitude)
     user_coordinates.append(actual_longitude)
 
-
     return loc_id, loc_type
-
-
 
 
 
@@ -49,12 +48,10 @@ def get_restaurants(ent_id, ent_type):
         ('entity_type', ent_type),
     )
 
-    response = requests.get('https://developers.zomato.com/api/v2.1/search?entity_id=90581&entity_type=zone&q=Daily%20Menu&start=30&count=50', headers=headers, params=params)
+    response = requests.get(
+        'https://developers.zomato.com/api/v2.1/search?entity_id=90581&entity_type=zone&q=Daily%20Menu&start=30&count=50', headers=headers, params=params)
 
     return response.json()
-
-
-
 
 
 
@@ -67,14 +64,13 @@ def get_menu(restaurant_id):
 
     url1 = url + restaurant_id
     response = requests.get(url1, headers=headers)
-    
+
     data = response.json()
 
     with open('daily_menu_file.json', 'a') as f:
         json.dump(data, f)
 
     print(data)
-
 
 
 
@@ -107,7 +103,7 @@ if __name__ == '__main__':
         print(r['featured_image'])
         print(r['highlights'])
         print(r['phone_numbers'])
-        print(str(geopy.distance.geodesic(coordinates, tuple(user_coordinates)).km)+'km')
+        print(str(geopy.distance.geodesic(
+            coordinates, tuple(user_coordinates)).km)+'km')
         get_menu(str(res_id))
         print()
-
