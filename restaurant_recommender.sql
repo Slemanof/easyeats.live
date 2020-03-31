@@ -10,8 +10,8 @@ CREATE TABLE `restaurant` (
   `credit_card` boolean,
   `gluten_free` boolean,
   `takeaway` boolean,
-  `phone_num1` int,
-  `phone_num2` int,
+  `phone_num1` varchar(255),
+  `phone_num2` varchar(255),
   `menu` json
 );
 
