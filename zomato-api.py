@@ -69,7 +69,7 @@ def get_menu(restaurant_id):
 
     with open('daily_menu_file.json', 'a') as f:
         json.dump(data, f)
-
+    data = (unidecode.unidecode((str(data)).replace('\'', '\"')))
     return data
 
 
@@ -109,7 +109,7 @@ if __name__ == '__main__':
         print(r['phone_numbers'])
         print(str(geopy.distance.geodesic(
             coordinates, tuple(user_coordinates)).km)+'km')
-        print(unidecode.unidecode(str(get_menu(str(res_id)))).replace('\'', '\"'))
+        print(get_menu(str(res_id)))
         # insertionMysql.insert(res_id, (r['name'].upper()), loc['address'], rating['aggregate_rating'], r['average_cost_for_two'], r['cuisines'],
         #                       r['featured_image'], vegan, vegetarian, card_payment, gluten_free, takeaway, '88003535', '12345', str(get_menu(str(res_id))))
         print()
