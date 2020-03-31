@@ -2,7 +2,6 @@ import requests
 import geopy.distance
 import json
 import insertionMysql
-import unidecode
 
 zomato_api = '6bc71cad65004dd66dbb46d16667630a'
 
@@ -69,7 +68,7 @@ def get_menu(restaurant_id):
 
     with open('daily_menu_file.json', 'a') as f:
         json.dump(data, f)
-    data = (unidecode.unidecode((str(data)).replace('\'', '\"')))
+    data = str(data).replace('\'', '\"').replace("\\xa0", " ")
     return data
 
 
@@ -109,7 +108,21 @@ if __name__ == '__main__':
         print(r['phone_numbers'])
         print(str(geopy.distance.geodesic(
             coordinates, tuple(user_coordinates)).km)+'km')
+        if 'Vegetarian Fiendly' in (r["highlights"]):
+            vegetarian = 1
+        if 'Vegan Options' in (r["highlights"]):
+            vegan = 1
+        if 'Credit Card' in (r["highlights"]):
+            card_payment = 1
+        if 'Gluten Free Options' in (r["highlights"]):
+            gluten_free = 1
+        if 'Takeaway Available' in (r["highlights"]):
+            takeaway = 1
+        phones_list = ['0', '0']
+        phones = r['phone_numbers']
+        for i in range(2):
+            phones_list[i] = phones[i]
         print(get_menu(str(res_id)))
-        # insertionMysql.insert(res_id, (r['name'].upper()), loc['address'], rating['aggregate_rating'], r['average_cost_for_two'], r['cuisines'],
-        #                       r['featured_image'], vegan, vegetarian, card_payment, gluten_free, takeaway, '88003535', '12345', str(get_menu(str(res_id))))
+        insertionMysql.insert(res_id, (r['name'].upper()), loc['address'], rating['aggregate_rating'], r['average_cost_for_two'], r['cuisines'],
+                              r['featured_image'], vegan, vegetarian, card_payment, gluten_free, takeaway, phones_list[0], phones_list[1], str(get_menu(str(res_id))))
         print()
