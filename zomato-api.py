@@ -66,8 +66,6 @@ def get_menu(restaurant_id):
 
     data = response.json()
 
-    with open('daily_menu_file.json', 'a') as f:
-        json.dump(data, f)
     data = str(data).replace('\'', '\"').replace("\\xa0", " ")
     return data
 
