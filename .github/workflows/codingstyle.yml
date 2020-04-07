@@ -8,7 +8,7 @@ name: Coding style
 on:
   push:
     paths:
-      - '*.py
+      - '*.py'
 
 jobs:
   flake8_py3:
