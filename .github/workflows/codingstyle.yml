@@ -14,7 +14,7 @@ jobs:
   flake8_py3:
     runs-on: ubuntu-latest
     steps:
-      - name:
+      - name: workflow
         uses: actions/checkout@master
       - name: Install flake8
         run: pip install flake8
