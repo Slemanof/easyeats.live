@@ -23,7 +23,7 @@ def check_cuisines(cuisine):
 
 
 def cuisines(res_id, res_cuisine):
-    cuisines_list = res_cuisine.split(",")
+    cuisines_list = res_cuisine.split(", ")
     cnx = mysql.connector.connect(user='script', password='LetMeIn:)123',
                                   host='127.0.0.1',
                                   database='restaurant_recommender')
