@@ -2,6 +2,8 @@ CREATE TABLE `restaurant` (
   `id` int PRIMARY KEY,
   `name` varchar(255),
   `address` varchar(255),
+  `latitute` varchar(255),
+  `longitude` varchar(255),
   `rating` float,
   `cost_for_2` int,
   `image` varchar(255),
