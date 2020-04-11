@@ -10,7 +10,7 @@ zomato_api = '6bc71cad65004dd66dbb46d16667630a'
 user_coordinates = []
 
 
-def get_location_details(query):
+def get_location_details(query, latitude, longitude):
 
     headers = {
         'Accept': 'application/json',
@@ -18,6 +18,8 @@ def get_location_details(query):
     }
     params = (
         ('query', query),
+        ('lat', latitude),
+        ('lon', longitude),
     )
 
     response = requests.get(
@@ -76,9 +78,14 @@ if __name__ == '__main__':
     prompt = '> '
     print('Enter location to search')
     q = input(prompt)
+
+    print('Enter latitude')
+    lat = input(prompt)
+    print('Enter longitude')
+    lon = input(prompt)
     print()
 
-    entity_id, entity_type = get_location_details(q)
+    entity_id, entity_type = get_location_details(q, lat, lon)
     data = get_restaurants(entity_id, entity_type)
 
     print("Restaurants in " + q.title() + " --\n")
@@ -124,7 +131,7 @@ if __name__ == '__main__':
         print(get_menu(str(res_id)))
         try:
             insertionMysql.insert(res_id, (r['name'].upper()), loc['address'], coordinates[0], coordinates[1], rating['aggregate_rating'], r['average_cost_for_two'], r['cuisines'],
-                              r['featured_image'], vegan, vegetarian, card_payment, gluten_free, takeaway, phones_list[0], phones_list[1], str(get_menu(str(res_id))))
+                                  r['featured_image'], vegan, vegetarian, card_payment, gluten_free, takeaway, phones_list[0], phones_list[1], str(get_menu(str(res_id))))
         except mysql.connector.errors.IntegrityError:
             continue
         print()
