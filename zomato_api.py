@@ -1,6 +1,7 @@
 import requests
 import geopy.distance
 import json
+import mysql.connector
 import insertionMysql
 
 zomato_api = '6bc71cad65004dd66dbb46d16667630a'
@@ -121,6 +122,9 @@ if __name__ == '__main__':
         for i in range(2):
             phones_list[i] = phones[i]
         print(get_menu(str(res_id)))
-        insertionMysql.insert(res_id, (r['name'].upper()), loc['address'], coordinates[0], coordinates[1], rating['aggregate_rating'], r['average_cost_for_two'], r['cuisines'],
+        try:
+            insertionMysql.insert(res_id, (r['name'].upper()), loc['address'], coordinates[0], coordinates[1], rating['aggregate_rating'], r['average_cost_for_two'], r['cuisines'],
                               r['featured_image'], vegan, vegetarian, card_payment, gluten_free, takeaway, phones_list[0], phones_list[1], str(get_menu(str(res_id))))
+        except mysql.connector.errors.IntegrityError:
+            continue
         print()
