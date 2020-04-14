@@ -5,8 +5,10 @@ import mysql.connector
 import unidecode
 import insertionMysql
 
-zomato_api = '6bc71cad65004dd66dbb46d16667630a'
+with open('api.json') as creds:
+    credentials = json.load(creds)
 
+zomato_api = credentials['zomato']
 
 user_coordinates = []
 
