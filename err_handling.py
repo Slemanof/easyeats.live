@@ -1,5 +1,4 @@
 import sys
-import os
 
 
 def restaurant_error(id):
