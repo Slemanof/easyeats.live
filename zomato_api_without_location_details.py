@@ -4,6 +4,7 @@ import json
 import mysql.connector
 import unidecode
 import insertionMysql
+import err_handling
 
 with open('api.json') as creds:
     credentials = json.load(creds)
@@ -138,6 +139,6 @@ for quater in get_quaters():
             except mysql.connector.errors.IntegrityError:
                 continue
             except:
-                # add a script that whould write logs
+                err_handling.restaurant_error(res_id)
                 continue
             print()
