@@ -1,5 +1,28 @@
 import mysql.connector
-from zomato_api_without_location_details import get_menu
+import requests
+import unidecode
+import json
+
+with open('api.json') as creds:
+    credentials = json.load(creds)
+
+zomato_api = credentials['zomato']
+
+def get_menu(restaurant_id):
+    headers = {
+        'Accept': 'application/json',
+        'user-key': zomato_api,
+    }
+    url = 'https://developers.zomato.com/api/v2.1/dailymenu?res_id='
+
+    url1 = url + restaurant_id
+    response = requests.get(url1, headers=headers)
+
+    data = response.json()
+
+    data = str(data).replace('\'', '\"')
+    data = unidecode.unidecode(data)
+    return data
 
 
 def update_menu_database(res_id, menu):
