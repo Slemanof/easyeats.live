@@ -45,7 +45,7 @@ def insert(res_id, res_name, res_address, res_latitute, res_longtitute, res_rati
                                   database='restaurant_recommender')
     cursor = cnx.cursor()
     add_restaurant = ("INSERT INTO restaurant (id, name, address,latitute,longitude, rating, cost_for_2 , image, vegan, vegetarian, credit_card, gluten_free, takeaway, phone_num1, phone_num2, menu) VALUES (" +
-                      str(res_id) + ", \""+res_name+"\", \""+res_address+"\", \""+str(res_latitute)+"\", \""+str(res_longtitute)+"\", \""+str(res_rating)+"\", \""+str(res_cost)+"\",\""+res_image+"\", \""+str(res_vegan)+"\" , \""+str(res_vegetatian)+"\", \""+str(res_credit_card)+"\" , \""+str(res_gluten_free)+"\", \""+str(res_takeaway)+"\" , \""+str(res_phone1)+"\", \""+str(res_phone2)+"\", \'"+str(res_menu)+"\')")
+                      str(res_id) + ", \""+res_name+"\", \""+res_address+"\", \""+str(res_latitute)+"\", "+str(res_longtitute)+", \""+str(res_rating)+"\", \""+str(res_cost)+"\",\""+res_image+"\", \""+str(res_vegan)+"\" , \""+str(res_vegetatian)+"\", \""+str(res_credit_card)+"\" , \""+str(res_gluten_free)+"\", \""+str(res_takeaway)+"\" , \""+str(res_phone1)+"\", \""+str(res_phone2)+"\", \'"+str(res_menu)+"\')")
     cursor.execute(add_restaurant)
     cnx.commit()
     cursor.close()
