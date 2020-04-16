@@ -1,5 +1,5 @@
 import mysql.connector
-from zomato_api import get_menu
+from zomato_api_without_location_details import get_menu
 
 
 def update_menu_database(res_id, menu):
