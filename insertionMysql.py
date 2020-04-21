@@ -29,7 +29,7 @@ def test_cuisines(res_id, res_cuisine):
                                   database='restaurant_recommender')
     cursor = cnx.cursor()
     for cuisine in cuisines_list:
-        check_cuisines(cuisine)
+        test_check_cuisines(cuisine)
         add_restaurant_cuisine = ("INSERT INTO restaurant_cuisine (restaurant_id, cuisine_id) VALUES ("+str(
             res_id)+",(SELECT id FROM cuisines WHERE name = \""+cuisine+"\"))")
         cursor.execute(add_restaurant_cuisine)
