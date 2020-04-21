@@ -2,7 +2,7 @@ import requests
 import geopy.distance
 import json
 import insertionMysql
-
+# Test github actions
 
 with open('api.json') as creds:
     credentials = json.load(creds)
