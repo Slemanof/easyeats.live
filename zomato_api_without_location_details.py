@@ -71,7 +71,7 @@ def get_menu(restaurant_id):
 
     data = response.json()
 
-    data = str(data).replace('\'', '\"')
+    data = str(data).replace('\'', '\"').replace("\\xa0", " ")
     data = unidecode.unidecode(data)
     return data
 
