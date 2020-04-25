@@ -1,6 +1,6 @@
 # EasyEats
 
-[![forthebadge made-with-python](http://ForTheBadge.com/images/badges/made-with-python.svg)](https://www.python.org/)
+[![ForTheBadge made-with-python](http://ForTheBadge.com/images/badges/made-with-python.svg)](https://www.python.org/)
 
 [![Maintenance](https://img.shields.io/badge/Maintained%3F-yes-green.svg)](https://GitHub.com/Slemanof/easyeats.live/graphs/commit-activity)
 
@@ -13,9 +13,8 @@
 
 [![GitHub issues-closed](https://img.shields.io/github/issues-closed/Naereen/StrapDown.js.svg)](https://GitHub.com/Slemanof/easyeats.live/issues?q=is%3Aissue+is%3Aclosed)
 
-[![ForTheBadge powered-by-electricity](http://ForTheBadge.com/images/badges/powered-by-electricity.svg)](http://easyeats.live)
 
-
+[![License](https://img.shields.io/github/license/Slemanof/easyeats.live)
 
 The main Project in the Secure Application Development class of Computing B.Sc.
 (grad. expected in 2021)
@@ -79,7 +78,15 @@ at https://www.gnu.org/software/classpath/license.html.
 
 ## Contributors
 
-[![GitHub contributors](https://opencollective.com/shields/contributors.svg?width=890)](https://GitHub.com/Slemanof/easyeats.live/contributors/)
+- [Ilyas Sakhanov](https://github.com/ilyassakhanov)
+- [Sulieman Al Rustom](https://github.com/Slemanof)
+- [Stanislav Brusnicky](https://github.com/Stanley008)
+- [Daniel De Corte](https://github.com/DeCortez)
+- [Riccardo Stoppani](https://github.com/riccardosl)
+- [Iryna Kulinuch](https://github.com/irinakulinich3712)
+- [Donnel Mandimika](https://github.com/donnelmandimika)
+- [Jan Dvorak](https://github.com/jandvorak-dot)
 
 
 [![ForTheBadge built-with-science](http://ForTheBadge.com/images/badges/built-with-science.svg)](https://GitHub.com/Slemanof)
+[![ForTheBadge powered-by-electricity](http://ForTheBadge.com/images/badges/powered-by-electricity.svg)](http://easyeats.live)
