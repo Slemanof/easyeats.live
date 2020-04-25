@@ -14,6 +14,7 @@ CREATE TABLE `restaurant` (
   `takeaway` boolean,
   `phone_num1` varchar(255),
   `phone_num2` varchar(255),
+  `timing` varchar(255),
   `menu` json
 );
 
