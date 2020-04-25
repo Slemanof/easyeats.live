@@ -3,7 +3,7 @@
 [![Maintenance](https://img.shields.io/badge/Maintained%3F-yes-green.svg)](https://GitHub.com/Slemanof/easyeats.live/graphs/commit-activity)
 [![Website Easyeats.live](https://img.shields.io/website-up-down-green-red/http/shields.io.svg)](http://easyeasts.live/)
 [![GitHub commits](https://img.shields.io/github/commits-since/Naereen/StrapDown.js/v1.0.0.svg)](https://GitHub.com/Slemanof/easyeats.live/commit/)
-[![GitHub issues](https://img.shields.io/github/issues/Naereen/StrapDown.js.svg)](https://GitHub.com/Slemanof/easyeats.live/issues/)
+[![GitHub issues](https://img.shields.io/github/issues/Slemanof/easyeats.live)](https://github.com/Slemanof/easyeats.live/issues)
 [![GitHub issues-closed](https://img.shields.io/github/issues-closed/Naereen/StrapDown.js.svg)](https://GitHub.com/Slemanof/easyeats.live/issues?q=is%3Aissue+is%3Aclosed)
 ![License](https://img.shields.io/github/license/Slemanof/easyeats.live)
 
