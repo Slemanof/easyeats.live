@@ -2,12 +2,13 @@
 
 ![Logo](https://github.com/Slemanof/easyeats.live/blob/frontend/Easy%20Eats%20Logos/logo.png)
 
-[![Maintenance](https://img.shields.io/badge/Maintained%3F-yes-green.svg)](https://GitHub.com/Slemanof/easyeats.live/graphs/commit-activity)
-[![Website Easyeats.live](https://img.shields.io/website-up-down-green-red/http/shields.io.svg)](http://easyeasts.live/)
-[![GitHub commits](https://img.shields.io/github/commits-since/Naereen/StrapDown.js/v1.0.0.svg)](https://GitHub.com/Slemanof/easyeats.live/commit/)
+![Python application](https://github.com/Slemanof/easyeats.live/workflows/Python%20application/badge.svg)
+[![Website Easyeats.live](https://img.shields.io/website?down_color=red&down_message=Offline&up_color=green&up_message=Online&url=http%3A%2F%2Feasyeats.live%2F)](http://easyeasts.live/)
+[![GitHub commits](https://img.shields.io/github/commits-since/Slemanof/easyeats.live)](https://GitHub.com/Slemanof/easyeats.live/commit/)
 [![GitHub issues](https://img.shields.io/github/issues/Slemanof/easyeats.live)](https://github.com/Slemanof/easyeats.live/issues)
 [![GitHub issues-closed](https://img.shields.io/github/issues-closed/Slemanof/easyeats.live)](https://GitHub.com/Slemanof/easyeats.live/issues?q=is%3Aissue+is%3Aclosed)
-![License](https://img.shields.io/github/license/Slemanof/easyeats.live)
+![License](https://img.shields.io/github/license/Slemanof/easyeats.live)(https://github.com/Slemanof/easyeats.live/blob/master/LICENSE)
+![Repo size](https://img.shields.io/github/repo-size/Slemanof/easyeats.live)
 
 The main Project in the Secure Application Development class of Computing B.Sc.
 (grad. expected in 2021)
