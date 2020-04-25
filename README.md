@@ -1,6 +1,5 @@
 # EasyEats
 
-[![ForTheBadge made-with-python](http://ForTheBadge.com/images/badges/made-with-python.svg)](https://www.python.org/)
 [![Maintenance](https://img.shields.io/badge/Maintained%3F-yes-green.svg)](https://GitHub.com/Slemanof/easyeats.live/graphs/commit-activity)
 [![Website Easyeats.live](https://img.shields.io/website-up-down-green-red/http/shields.io.svg)](http://easyeasts.live/)
 [![GitHub commits](https://img.shields.io/github/commits-since/Naereen/StrapDown.js/v1.0.0.svg)](https://GitHub.com/Slemanof/easyeats.live/commit/)
@@ -79,6 +78,6 @@ at https://www.gnu.org/software/classpath/license.html.
 - [Donnel Mandimika](https://github.com/donnelmandimika)
 - [Jan Dvorak](https://github.com/jandvorak-dot)
 
-
+[![ForTheBadge made-with-python](http://ForTheBadge.com/images/badges/made-with-python.svg)](https://www.python.org/)
 [![ForTheBadge built-with-science](http://ForTheBadge.com/images/badges/built-with-science.svg)](https://GitHub.com/Slemanof)
 [![ForTheBadge powered-by-electricity](http://ForTheBadge.com/images/badges/powered-by-electricity.svg)](http://easyeats.live)
