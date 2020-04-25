@@ -1,15 +1,13 @@
 import re
-timing = "08:00 to 02:00 (Mon, Sun), 08:00 to 04:00 (Tue-Sat)"
 
 
 def findtime(time):
+    if re.match(r'Closed', time):
+        return 'Closed'
     result = ''
     for time in re.findall(r"\d{2}:\d{2}", time):
         result += time + "-"
     return result[:-1]
-
-
-# print(findtime("08:00 to 02:00 (Mon, Sun"))
 
 
 week_dict = {"Mon": 0, "Tue": 1, "Wed": 2,
@@ -24,8 +22,6 @@ def put_timings_order(row, days, hrs_dict):
         hrs_dict[week_lst[week_dict[day]]] = findtime(row)
     return hrs_dict
 
-# print(put_timings_order("08:00 to 02:00 (Mon, Sun)", "Mon, Sun)",{}))
-
 
 def put_timings_interval(row, days, hrs_dict):
     days = days.replace(")", "")
@@ -36,24 +32,19 @@ def put_timings_interval(row, days, hrs_dict):
         hrs_dict[week_lst[day]] = time
     return hrs_dict
 
-# print(put_timings_interval("08:00 to 04:00 (Tue-Sat)", "Mon-Sun)", {}))
-
 
 def put_timings_standalone(row, day, hrs_dict):
     hrs_dict[week_lst[week_dict[day]]] = findtime(row)
     return hrs_dict
 
 
-print(put_timings_standalone('11:00 to 22:00 (Sun)', 'Sun', {}))
-
-
 def get_opening_hrs(zomato_timing):
     opening_hrs_dict = {}
     for row in zomato_timing.split("),"):
-        order_days = re.findall(r"[A-Z][a-z]{2}, [A-Z][a-z]{2}", row)
+        order_days = re.findall(r"[D-Z][a-z]{2}, [D-Z][a-z]{2}", row)
         interval_days = re.findall(
-            r"[A-Z][a-z]{2}-[A-Z][a-z]{2}", row)
-        standalone_days = re.findall(r"[A-Z][a-z]{2}", row)
+            r"[D-Z][a-z]{2}-[D-Z][a-z]{2}", row)
+        standalone_days = re.findall(r"[D-Z][a-z]{2}", row)
         if order_days:
             opening_hrs_dict = put_timings_order(
                 row, order_days[0], opening_hrs_dict)
