@@ -1,5 +1,22 @@
 # EasyEats
 
+[![forthebadge made-with-python](http://ForTheBadge.com/images/badges/made-with-python.svg)](https://www.python.org/)
+
+[![Maintenance](https://img.shields.io/badge/Maintained%3F-yes-green.svg)](https://GitHub.com/Slemanof/easyeats.live/graphs/commit-activity)
+
+[![Website Easyeats.live](https://img.shields.io/website-up-down-green-red/http/shields.io.svg)](http://easyeasts.live/)
+
+[![GitHub commits](https://img.shields.io/github/commits-since/Naereen/StrapDown.js/v1.0.0.svg)](https://GitHub.com/Slemanof/easyeats.live/commit/)
+
+
+[![GitHub issues](https://img.shields.io/github/issues/Naereen/StrapDown.js.svg)](https://GitHub.com/Slemanof/easyeats.live/issues/)
+
+[![GitHub issues-closed](https://img.shields.io/github/issues-closed/Naereen/StrapDown.js.svg)](https://GitHub.com/Slemanof/easyeats.live/issues?q=is%3Aissue+is%3Aclosed)
+
+[![ForTheBadge powered-by-electricity](http://ForTheBadge.com/images/badges/powered-by-electricity.svg)](http://easyeats.live)
+
+
+
 The main Project in the Secure Application Development class of Computing B.Sc.
 (grad. expected in 2021)
 
@@ -11,7 +28,7 @@ and gives recommendations based on users choices.
 
 ## Requirement
 
-* TBA
+TBA
 
 ## Installation
 
@@ -31,7 +48,7 @@ TBA
 
 * Zomato API daily requests number, which is 1000 request for the free version which
   is being used at the moment.
-*
+
 
 ## Dependencies
 
@@ -62,11 +79,7 @@ at https://www.gnu.org/software/classpath/license.html.
 
 ## Contributors
 
-- [Ilyas Sakhanov](https://github.com/ilyassakhanov)
-- [Sulieman Al Rustom](https://github.com/Slemanof)
-- [Stanislav Brusnicky](https://github.com/Stanley008)
-- [Daniel De Corte](https://github.com/DeCortez)
-- [Riccardo Stoppani](https://github.com/riccardosl)
-- [Iryna Kulinuch](https://github.com/irinakulinich3712)
-- [Donnel Mandimika](https://github.com/donnelmandimika)
-- [Jan Dvorak](https://github.com/jandvorak-dot)
+[![GitHub contributors](https://opencollective.com/shields/contributors.svg?width=890)](https://GitHub.com/Slemanof/easyeats.live/contributors/)
+
+
+[![ForTheBadge built-with-science](http://ForTheBadge.com/images/badges/built-with-science.svg)](https://GitHub.com/Slemanof)
