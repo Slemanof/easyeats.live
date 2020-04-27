@@ -1,19 +1,18 @@
 # EasyEats
 
-![Logo](https://github.com/Slemanof/easyeats.live/blob/frontend/Easy%20Eats%20Logos/logo.png)
+
 
 ![Python application](https://github.com/Slemanof/easyeats.live/workflows/Python%20application/badge.svg)
 [![Website Easyeats.live](https://img.shields.io/website?down_color=red&down_message=Offline&up_color=green&up_message=Online&url=http%3A%2F%2Feasyeats.live%2F)](http://easyeasts.live/)
-[![GitHub commits](https://img.shields.io/github/commit-activity/m/Slemanof/easyeats.live)](https://GitHub.com/Slemanof/easyeats.live/commit/)
-[![GitHub issues](https://img.shields.io/github/issues/Slemanof/easyeats.live)](https://github.com/Slemanof/easyeats.live/issues)
-[![GitHub issues-closed](https://img.shields.io/github/issues-closed/Slemanof/easyeats.live)](https://GitHub.com/Slemanof/easyeats.live/issues?q=is%3Aissue+is%3Aclosed)
-[![License](https://img.shields.io/github/license/Slemanof/easyeats.live)](https://github.com/Slemanof/easyeats.live/blob/master/LICENSE)
 ![Repo size](https://img.shields.io/github/repo-size/Slemanof/easyeats.live)
+[![License](https://img.shields.io/github/license/Slemanof/easyeats.live)](https://github.com/Slemanof/easyeats.live/blob/master/LICENSE)
+
+[![GitHub issues](https://img.shields.io/github/issues/Slemanof/easyeats.live)](https://github.com/Slemanof/easyeats.live/issues)
 ![Contributors](https://img.shields.io/github/contributors/Slemanof/easyeats.live)
 
+![Logo](https://github.com/Slemanof/easyeats.live/blob/frontend/Easy%20Eats%20Logos/logo.png)
 
-The main Project in the Secure Application Development class of Computing B.Sc.
-(grad. expected in 2021)
+
 
 
 ## Objective
