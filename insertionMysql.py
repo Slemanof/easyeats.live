@@ -1,4 +1,5 @@
 import mysql.connector
+import readtimigs
 
 
 def check_cuisines(cuisine):
@@ -39,13 +40,13 @@ def cuisines(res_id, res_cuisine):
     return
 
 
-def insert(res_id, res_name, res_address, res_latitute, res_longtitute, res_rating, res_cost, res_cuisine, res_image, res_vegan, res_vegetatian, res_credit_card, res_gluten_free, res_takeaway, res_phone1, res_phone2, res_menu):
+def insert(res_id, res_name, res_address, res_latitute, res_longtitute, res_rating, res_cost, res_cuisine, res_image, res_vegan, res_vegetatian, res_credit_card, res_gluten_free, res_takeaway, res_phone1, res_phone2,opening_hrs,res_menu):
     cnx = mysql.connector.connect(user='script', password='LetMeIn:)123',
                                   host='127.0.0.1',
                                   database='restaurant_recommender')
     cursor = cnx.cursor()
-    add_restaurant = ("INSERT INTO restaurant (id, name, address,latitute,longitude, rating, cost_for_2 , image, vegan, vegetarian, credit_card, gluten_free, takeaway, phone_num1, phone_num2, menu) VALUES (" +
-                      str(res_id) + ", \""+res_name+"\", \""+res_address+"\", \""+str(res_latitute)+"\", "+str(res_longtitute)+", \""+str(res_rating)+"\", \""+str(res_cost)+"\",\""+res_image+"\", \""+str(res_vegan)+"\" , \""+str(res_vegetatian)+"\", \""+str(res_credit_card)+"\" , \""+str(res_gluten_free)+"\", \""+str(res_takeaway)+"\" , \""+str(res_phone1)+"\", \""+str(res_phone2)+"\", \'"+str(res_menu)+"\')")
+    add_restaurant = ("INSERT INTO restaurant (id, name, address,latitute,longitude, rating, cost_for_2 , image, vegan, vegetarian, credit_card, gluten_free, takeaway, phone_num1, phone_num2,timing, menu) VALUES (" +
+                      str(res_id) + ", \""+res_name+"\", \""+res_address+"\", \""+str(res_latitute)+"\", "+str(res_longtitute)+", \""+str(res_rating)+"\", \""+str(res_cost)+"\",\""+res_image+"\", \""+str(res_vegan)+"\" , \""+str(res_vegetatian)+"\" ,\""+str(res_credit_card)+"\" , \""+str(res_gluten_free)+"\", \""+str(res_takeaway)+"\" , \""+str(res_phone1)+"\", \""+str(res_phone2)+"\",\"" +str(readtimigs.get_opening_hrs(opening_hrs))+"\", \'"+str(res_menu)+"\')")
     cursor.execute(add_restaurant)
     cnx.commit()
     cursor.close()
