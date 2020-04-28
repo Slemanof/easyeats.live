@@ -36,11 +36,13 @@ def put_timings_standalone(row, day, hrs_dict):
     hrs_dict[week_lst[week_dict[day]]] = findtime(row)
     return hrs_dict
 
+
 def satitize_zomato_timings(zomato_timing):
-    zomato_timing = zomato_timing.replace(" AM", ":00").replace(" PM", ":00").replace("to", "").replace("12 Noon", "12:00").replace("12 Midnight", "24:00")
+    zomato_timing = zomato_timing.replace(" AM", ":00").replace(" PM", ":00").replace(
+        "to", "").replace("12 Noon", "12:00").replace("12 Midnight", "24:00")
 
     return zomato_timing
-    
+
 
 def get_opening_hrs(zomato_timing):
     try:
