@@ -3,7 +3,7 @@
 
 
 ![Python application](https://github.com/Slemanof/easyeats.live/workflows/Python%20application/badge.svg)
-[![Website Easyeats.live](https://img.shields.io/website?down_color=red&down_message=Offline&up_color=green&up_message=Online&url=http%3A%2F%2Feasyeats.live%2F)](http://easyeasts.live/)
+[![Website Easyeats.live](https://img.shields.io/website?down_color=red&down_message=Offline&up_color=green&up_message=Online&url=http%3A%2F%2Feasyeats.live%2F)](http://easyeats.live/)
 ![Repo size](https://img.shields.io/github/repo-size/Slemanof/easyeats.live)
 [![License](https://img.shields.io/github/license/Slemanof/easyeats.live)](https://github.com/Slemanof/easyeats.live/blob/master/LICENSE)
 
