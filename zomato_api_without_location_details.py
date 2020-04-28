@@ -1,5 +1,4 @@
 import requests
-import geopy.distance
 import json
 import mysql.connector
 import unidecode
@@ -117,8 +116,6 @@ for quater in get_quaters():
             print(r['highlights'])
             print(r['phone_numbers'])
             print(r['timings'])
-            # print(str(geopy.distance.geodesic(
-            # coordinates, tuple(user_coordinates)).km)+'km')
             if 'Vegetarian Fiendly' in (r["highlights"]):
                 vegetarian = 1
 
