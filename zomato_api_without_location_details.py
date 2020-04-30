@@ -1,10 +1,10 @@
 import requests
-import geopy.distance
 import json
 import mysql.connector
 import unidecode
 import insertionMysql
 import err_handling
+import input_validation
 
 with open('api.json') as creds:
     credentials = json.load(creds)
@@ -73,6 +73,7 @@ def get_menu(restaurant_id):
 
     data = str(data).replace('\'', '\"').replace("\\xa0", " ")
     data = unidecode.unidecode(data)
+    data = input_validation.menu_checker(data)
     return data
 
 
@@ -114,8 +115,7 @@ for quater in get_quaters():
             print(r['featured_image'])
             print(r['highlights'])
             print(r['phone_numbers'])
-            # print(str(geopy.distance.geodesic(
-            # coordinates, tuple(user_coordinates)).km)+'km')
+            print(r['timings'])
             if 'Vegetarian Fiendly' in (r["highlights"]):
                 vegetarian = 1
 
@@ -135,7 +135,7 @@ for quater in get_quaters():
             print(get_menu(str(res_id)))
             try:
                 insertionMysql.insert(res_id, (r['name'].upper()), loc['address'], coordinates[0], coordinates[1], rating['aggregate_rating'], r['average_cost_for_two'], r['cuisines'],
-                                      r['featured_image'],  vegan, vegetarian, card_payment, gluten_free, takeaway, phones_list[0], phones_list[1],r['timings'], str(get_menu(str(res_id))))
+                                      r['featured_image'],  vegan, vegetarian, card_payment, gluten_free, takeaway, phones_list[0], phones_list[1], r['timings'], str(get_menu(str(res_id))))
             except mysql.connector.errors.IntegrityError:
                 continue
             except:

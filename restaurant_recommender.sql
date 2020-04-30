@@ -14,8 +14,8 @@ CREATE TABLE `restaurant` (
   `takeaway` boolean,
   `phone_num1` varchar(255),
   `phone_num2` varchar(255),
-  `timing` varchar(255),
-  `menu` json
+  `timing` varchar(500),
+  `menu` varchar(4000)
 );
 
 CREATE TABLE `cuisines` (
@@ -30,21 +30,3 @@ CREATE TABLE `restaurant_cuisine` (
   FOREIGN KEY (restaurant_id) REFERENCES restaurant(id),
   FOREIGN KEY (cuisine_id) REFERENCES cuisines(id)
 );
-
-CREATE PROCEDURE FindClosest (IN usr_lat REAL, IN usr_lon REAL)
-SELECT
-    id,
-    name,
-    (
-        3959 
-        * acos(
-            cos( radians(usr_lat) ) 
-            * cos( radians( latitute ) ) 
-            * cos( radians( longitude ) - radians(usr_lon) ) 
-            + sin( radians(usr_lat) ) 
-            * sin( radians( latitute ) ) 
-        ) 
-    ) AS distance 
-FROM restaurant 
-ORDER BY distance
-LIMIT 20;
