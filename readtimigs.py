@@ -65,6 +65,3 @@ def get_opening_hrs(zomato_timing):
         return str(opening_hrs_dict)
     except:
         return "Unavaliable"
-
-
-print(get_opening_hrs("11 AM - 11 PM (Po-Pá), 12 Noon - 11 PM (So-Ne)"))
