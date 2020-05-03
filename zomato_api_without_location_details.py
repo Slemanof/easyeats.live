@@ -110,7 +110,7 @@ for quater in get_quaters():
             coordinates = (loc['latitude'], loc['longitude'])
             rating = r['user_rating']
             print(rating['aggregate_rating'])
-            print(r['average_cost_for_two'])
+            print(r['price_range'])
             print(r['cuisines'])
             print(r['featured_image'])
             print(r['highlights'])
@@ -134,11 +134,12 @@ for quater in get_quaters():
                 phones_list[i] = phones[i]
             print(get_menu(str(res_id)))
             try:
-                insertionMysql.insert(res_id, (r['name'].upper()), loc['address'], coordinates[0], coordinates[1], rating['aggregate_rating'], r['average_cost_for_two'], r['cuisines'],
-                                      r['featured_image'],  vegan, vegetarian, card_payment, gluten_free, takeaway, phones_list[0], phones_list[1], r['timings'], str(get_menu(str(res_id))))
+                insertionMysql.insert(res_id, (r['name'].upper()), loc['address'], coordinates[0], coordinates[1], rating['aggregate_rating'], r['price_range'], r['cuisines'],
+                                      r['featured_image'],  vegan, vegetarian, card_payment, gluten_free, takeaway, phones_list[0], phones_list[1], r['timings'], str(get_menu(str(res_id))),r['menu_url'])
             except mysql.connector.errors.IntegrityError:
                 continue
-            except:
-                err_handling.restaurant_error(res_id)
-                continue
+            except Exception as e:
+                print(e)
+            #     err_handling.restaurant_error(res_id)
+            #     continue
             print()

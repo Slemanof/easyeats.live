@@ -5,7 +5,7 @@ CREATE TABLE `restaurant` (
   `latitute` real,
   `longitude` real,
   `rating` float,
-  `cost_for_2` int,
+  `price_range` int,
   `image` varchar(255),
   `vegan` boolean,
   `vegetarian` boolean,
@@ -15,7 +15,8 @@ CREATE TABLE `restaurant` (
   `phone_num1` varchar(255),
   `phone_num2` varchar(255),
   `timing` varchar(500),
-  `menu` varchar(4000)
+  `menu` varchar(4000),
+  `usual_menu_url`varchar(255)
 );
 
 CREATE TABLE `cuisines` (
