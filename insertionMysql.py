@@ -1,7 +1,7 @@
 import mysql.connector
 
 
-def test_check_cuisines(cuisine):
+def check_cuisines(cuisine):
     cuisine_exisits = False
     cnx = mysql.connector.connect(user='script', password='LetMeIn:)123',
                                   host='127.0.0.1',
@@ -22,7 +22,7 @@ def test_check_cuisines(cuisine):
     return
 
 
-def test_cuisines(res_id, res_cuisine):
+def cuisines(res_id, res_cuisine):
     cuisines_list = res_cuisine.split(",")
     cnx = mysql.connector.connect(user='script', password='LetMeIn:)123',
                                   host='127.0.0.1',
@@ -39,7 +39,7 @@ def test_cuisines(res_id, res_cuisine):
     return
 
 
-def test_insert(res_id, res_name, res_address, res_rating, res_cost, res_cuisine, res_image, res_vegan, res_vegetatian, res_credit_card, res_gluten_free, res_takeaway, res_phone1, res_phone2, res_menu):
+def insert(res_id, res_name, res_address, res_rating, res_cost, res_cuisine, res_image, res_vegan, res_vegetatian, res_credit_card, res_gluten_free, res_takeaway, res_phone1, res_phone2, res_menu):
     cnx = mysql.connector.connect(user='script', password='LetMeIn:)123',
                                   host='127.0.0.1',
                                   database='restaurant_recommender')
