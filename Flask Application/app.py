@@ -119,7 +119,7 @@ def home():
     data = cur.fetchall()
     print(data)
 
-    return render_template('distance.html', data=data)
+    return render_template('index.html', data=data)
 
 
 if __name__ == "__main__":
