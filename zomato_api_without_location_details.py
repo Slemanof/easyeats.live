@@ -136,8 +136,7 @@ for quater in get_quaters():
                                       r['featured_image'],  vegan, vegetarian, card_payment, gluten_free, takeaway, phones_list[0], phones_list[1], r['timings'], str(get_menu(str(res_id))), r['menu_url'])
             except mysql.connector.errors.IntegrityError:
                 continue
-            except Exception as e:
-                print(e)
-            #     err_handling.restaurant_error(res_id)
-            #     continue
+            except:
+                err_handling.restaurant_error(res_id)
+                continue
             print()
