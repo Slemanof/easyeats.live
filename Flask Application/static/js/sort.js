@@ -24,11 +24,11 @@ function mySort(attribute) {
         Number(restaurantsOutput.children[i].getAttribute(attribute)) >
         Number(restaurantsOutput.children[j].getAttribute(attribute))
       ) {
-        replaceNode = restaurantsOutput.replaceChild(
+        replacedNode = restaurantsOutput.replaceChild(
           restaurantsOutput.children[j],
           restaurantsOutput.children[i]
         );
-        insertAfter(replaceNode, restaurantsOutput.children[i]);
+        insertAfter(replacedNode, restaurantsOutput.children[i]);
       }
     }
   }
@@ -42,11 +42,11 @@ function mySortDesc(attribute) {
         Number(restaurantsOutput.children[i].getAttribute(attribute)) <
         Number(restaurantsOutput.children[j].getAttribute(attribute))
       ) {
-        replaceNode = restaurantsOutput.replaceChild(
+        replacedNode = restaurantsOutput.replaceChild(
           restaurantsOutput.children[j],
           restaurantsOutput.children[i]
         );
-        insertAfter(replaceNode, restaurantsOutput.children[i]);
+        insertAfter(replacedNode, restaurantsOutput.children[i]);
       }
     }
   }
