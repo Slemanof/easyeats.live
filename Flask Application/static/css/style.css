@@ -11,7 +11,14 @@ html {
    }
 
 body {
-  box-sizing: border-box; }
+  font-family: "Lato", sans-serif;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 1.7;
+  color: #777;
+  padding: 30px;
+  box-sizing: border-box;
+}
 
 @keyframes moveInLeft {
   0% {
@@ -41,14 +48,6 @@ body {
     opacity: 1;
     transform: translateY(0); } }
 
-body {
-  font-family: "Lato", sans-serif;
-  font-weight: 400;
-  font-size: 16px;
-  line-height: 1.7;
-  color: #777;
-  padding: 30px; }
-
 .heading-primary {
   color: #fff;
   text-transform: uppercase;
@@ -66,43 +65,6 @@ body {
     font-weight: 700;
     letter-spacing: 17.4px;
     animation: moveInRight 1s ease-out; }
-
-.main {
-  line-height: 1.6; }
-
-.sidebar {
-  color: #faf9f9;
-  font-size: 2.4rem;
-  margin-top: 3.5rem; }
-
-body {
-  font-family: "Lato", sans-serif;
-  font-weight: 400;
-  font-size: 16px;
-  line-height: 1.7;
-  color: #777;
-  padding: 30px; }
-
-.heading-primary {
-  color: #fff;
-  text-transform: uppercase;
-  backface-visibility: hidden;
-  margin-bottom: 60px; }
-  .heading-primary--main {
-    display: block;
-    font-size: 60px;
-    font-weight: 400;
-    letter-spacing: 35px;
-    animation: moveInLeft 1s ease-out; }
-  .heading-primary--sub {
-    display: block;
-    font-size: 20px;
-    font-weight: 700;
-    letter-spacing: 17.4px;
-    animation: moveInRight 1s ease-out; }
-
-.main {
-  line-height: 1.6; }
 
 .sidebar {
   color: #faf9f9;
@@ -180,7 +142,7 @@ body {
     text-align: center; }
 
 .main {
-
+  line-height: 1.6;
   background-image: linear-gradient(to right bottom, rgba(11, 143, 113, 0.8), rgba(123, 153, 140, 0.27));
   background-size: cover;
   background-repeat: no-repeat;
@@ -322,8 +284,7 @@ body {
         left: 100%;
         top: 80%;
         transform: translateY(-80%); }
-      .main__filter__body-show-more-visable::after {
-        border-bottom: 10px solid #000; }
+     
     .main__filter__body-input:checked ~ .main__filter__body-label::before {
       background-color: #28b485; }
     .main__filter__body-search-btn:link, .main__filter__body-search-btn:visited {
@@ -339,7 +300,6 @@ body {
       color: #fff; }
   .main__address-input {
     font-family: inherit;
-    font-size: 1.2rem;
     color: #000;
     background-color: #f4f2f2;
     border: none;
@@ -384,7 +344,6 @@ body {
       line-height: 3rem; }
     .main .restaurant-view__bottom-block {
       padding: 1rem;
-      display: flex;
       flex-direction: column;
       display: none; }
     .main .restaurant-view__bottom-block-options {
@@ -454,6 +413,6 @@ body {
     margin-bottom: 4rem; }
   .footer__logo {
     width: 15rem;
-    hight: auto; }
+    height: auto; }
   .footer__copyright__text {
     color: #fff; }
