@@ -9,12 +9,6 @@ with open('api.json') as creds:
     credentials = json.load(creds)
 
 
-cnx = mysql.connector.connect(user=credentials['mysql_user'], password=credentials['mysql_password'],
-                              host='127.0.0.1',
-                              database=credentials['mysql_database_name'])
-cursor = cnx.cursor()
-
-
 def hash_smth(secret):
     secret = secret.encode()
     salt = bcrypt.gensalt()
@@ -30,12 +24,14 @@ def encrypt_smth(secret):
     return ciphered_text.decode('utf-8')
 
 
-def add_main(email, name, password):
+def add(email, name, password):
+    cnx = mysql.connector.connect(user=credentials['mysql_user'], password=credentials['mysql_password'],
+                                  host='127.0.0.1',
+                                  database=credentials['mysql_database_name'])
+    cursor = cnx.cursor()
     add_user = (
         "INSERT INTO user (email, name, password) VALUES (\" " + encrypt_smth(email)+"\", \"" + name+"\", \"" + hash_smth(password)+"\")")
     cursor.execute(add_user)
     cnx.commit()
+    cnx.close()
     return
-
-
-cnx.close()
