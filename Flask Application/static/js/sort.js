@@ -16,8 +16,6 @@ sortOptions.addEventListener('change', () => {
   }
 });
 
-window.addEventListener('load', mySortDesc('data-rating'));
-
 function mySort(attribute) {
   const restaurantsOutput = document.querySelector('.restaurant-view');
   for (let i = 0; i < restaurantsOutput.children.length; i++) {
