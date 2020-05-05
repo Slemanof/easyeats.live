@@ -11,8 +11,6 @@ with open('api.json') as creds:
 
 zomato_api = credentials['zomato']
 
-user_coordinates = []
-
 
 def get_location_details(query):
 
@@ -135,7 +133,7 @@ for quater in get_quaters():
             print(get_menu(str(res_id)))
             try:
                 insertionMysql.insert(res_id, (r['name'].upper()), loc['address'], coordinates[0], coordinates[1], rating['aggregate_rating'], r['price_range'], r['cuisines'],
-                                      r['featured_image'],  vegan, vegetarian, card_payment, gluten_free, takeaway, phones_list[0], phones_list[1], r['timings'], str(get_menu(str(res_id))),r['menu_url'])
+                                      r['featured_image'],  vegan, vegetarian, card_payment, gluten_free, takeaway, phones_list[0], phones_list[1], r['timings'], str(get_menu(str(res_id))), r['menu_url'])
             except mysql.connector.errors.IntegrityError:
                 continue
             except Exception as e:
