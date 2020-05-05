@@ -31,3 +31,9 @@ CREATE TABLE `restaurant_cuisine` (
   FOREIGN KEY (restaurant_id) REFERENCES restaurant(id),
   FOREIGN KEY (cuisine_id) REFERENCES cuisines(id)
 );
+
+CREATE TABLE `user`(
+  `email` varchar(255) PRIMARY KEY,
+  `name` varchar(255),
+  `password` varchar(255)
+);
