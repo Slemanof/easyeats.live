@@ -1,26 +1,26 @@
-const Restaurantshow = {
-  toggleClass(element, elementClass) {
-    element.classList.toggle(elementClass);
-  },
+const showBtn = document.querySelectorAll('.restaurant-view__show-more');
 
-  showMore(element, exccerpt) {
-    element.addEventListener('click', (event) => {
-      const linkText = event.target.textContent;
-      event.preventDefault();
-      if (linkText == 'Show more') {
-        element.textContent = 'Show less';
-        this.toggleClass(
-          document.querySelector('.restaurant-view__bottom-block'),
-          'restaurant-view__bottom-block-visable'
-        );
-      } else {
-        element.textContent = 'Show more';
-        this.toggleClass(
-          document.querySelector('.restaurant-view__bottom-block '),
-          'restaurant-view__bottom-block-visable'
-        );
-      }
-    });
-  },
-};
-Restaurantshow.showMore(document.querySelector('.restaurant-view__show-more'));
+for (let item of showBtn) {
+  item.addEventListener('click', () => showMore(event));
+
+  function showMore(event) {
+    event.preventDefault();
+    if (event.target.textContent == 'Show more') {
+      event.target.textContent = 'Show less';
+      toggleClass(
+        event.target.previousElementSibling,
+        'restaurant-view__bottom-block-visable'
+      );
+    } else {
+      event.target.textContent = 'Show more';
+      toggleClass(
+        event.target.previousElementSibling,
+        'restaurant-view__bottom-block-visable'
+      );
+    }
+  }
+}
+
+function toggleClass(element, elementClass) {
+  element.classList.toggle(elementClass);
+}
