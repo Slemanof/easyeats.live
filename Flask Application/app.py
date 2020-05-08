@@ -64,12 +64,11 @@ def home():
     else:
         filter_by_distance = ("SELECT * FROM (%s) as t" % filter_by_cuisine)
 
-    def additional_options(query):
-        additional_filters = {'vegetarian': 'Vegetarian', 'vegan': 'Vegan', 'gluten_free': 'Gluten Free',
-                              'credit_card': 'Payments by card accepted', 'takeaway': 'Takeaway option available'}
-        for filter_name, value in additional_filters.items():
+        def additional_options(query):
+        additional_filters = ['vegetarian', 'vegan', 'gluten_free', 'credit_card', 'takeaway']
+        for filter_name in additional_filters:
             if filter_name in result:
-                query = "SELECT * FROM (%s) as t WHERE %s='%s' " % (query, filter_name, value)
+                query = "SELECT * FROM (%s) as t WHERE %s=1 " % (query, filter_name)
             else:
                 query = "SELECT * FROM (%s) as t" % query
 
