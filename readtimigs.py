@@ -1,4 +1,5 @@
 import re
+import json
 
 
 def findtime(time):
@@ -62,6 +63,6 @@ def get_opening_hrs(zomato_timing):
             if standalone_days:
                 opening_hrs_dict = put_timings_standalone(
                     row, standalone_days[0], opening_hrs_dict)
-        return str(opening_hrs_dict)
+        return json.dumps(opening_hrs_dict)
     except:
         return "Unavaliable"
