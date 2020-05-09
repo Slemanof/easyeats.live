@@ -15,7 +15,7 @@ CREATE TABLE `restaurant` (
   `phone_num1` varchar(255),
   `phone_num2` varchar(255),
   `timing` JSON,
-  `menu` varchar(4000),
+  `menu` JSON,
   `usual_menu_url`varchar(255)
 );
 

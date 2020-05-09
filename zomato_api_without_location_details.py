@@ -4,7 +4,7 @@ import mysql.connector
 import unidecode
 import insertionMysql
 import err_handling
-import input_validation
+import menu_checker
 
 with open('api.json') as creds:
     credentials = json.load(creds)
@@ -71,7 +71,11 @@ def get_menu(restaurant_id):
 
     data = str(data).replace('\'', '\"').replace("\\xa0", " ")
     data = unidecode.unidecode(data)
-    data = input_validation.menu_checker(data)
+    try:
+        data = menu_checker.menu_checker(data)
+    except json.decoder.JSONDecodeError:
+        err_handling.restaurant_error(restaurant_id, 'menu')
+        return '{"No daily menu at the moment":" "}'
     return data
 
 
