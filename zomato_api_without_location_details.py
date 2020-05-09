@@ -6,10 +6,12 @@ import insertionMysql
 import err_handling
 import menu_checker
 
+
 with open('api.json') as creds:
-    credentials = json.load(creds)
+credentials = json.load(creds)
 
 zomato_api = credentials['zomato']
+
 
 
 def get_location_details(query):
@@ -130,14 +132,27 @@ for quater in get_quaters():
             if 'Takeaway Available' in (r["highlights"]):
                 takeaway = 1
 
-            phones_list = ['0', '0']
-            phones = r['phone_numbers']
-            for i in range(2):
-                phones_list[i] = phones[i]
+            phones = r['phone_numbers'].split(", ")
+
+
+            def save_phones():
+                phones_list = ['0', '0']
+
+                if len(phones) == 0:
+                    return phones_list
+                elif len(phones) == 1:
+                    phones_list[0] = phones[0]
+                    return phones_list
+                else:
+                    phones_list[0] = phones[0]
+                    phones_list[1] = phones[1]
+                    return phones_list
+
+
             print(get_menu(str(res_id)))
             try:
                 insertionMysql.insert(res_id, (r['name'].upper()), loc['address'], coordinates[0], coordinates[1], rating['aggregate_rating'], r['price_range'], r['cuisines'],
-                                      r['featured_image'],  vegan, vegetarian, card_payment, gluten_free, takeaway, phones_list[0], phones_list[1], r['timings'], str(get_menu(str(res_id))), r['menu_url'])
+                                      r['featured_image'],  vegan, vegetarian, card_payment, gluten_free, takeaway, save_phones()[0], save_phones()[1], r['timings'], str(get_menu(str(res_id))), r['menu_url'])
             except mysql.connector.errors.IntegrityError:
                 continue
             except:
