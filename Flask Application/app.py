@@ -97,7 +97,7 @@ def location_option(cuisine_query, filters):
     else:
         filtered_by_distance = ("SELECT * FROM (%s) as t" % cuisine_query)
 
-    return filter_by_distance
+    return filtered_by_distance
 
 if __name__ == "__main__":
     app.run(debug=True)
