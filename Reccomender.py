@@ -1,18 +1,8 @@
-import mysql.connector
 
 
-mydb = mysql.connector.connect(
-  host="localhost",
-  user="root",
-  passwd="root",
-  database="restaurants"
-)
-
-mycursor = mydb.cursor()
-
-
-def get_recommendations(customerID):
+def get_recommendations(customerID, dblink, amount=3):
     # return a list of three restaurant IDs
+    mycursor = dblink
     customerID = customerID
     someID = getCustomerLiked(customerID)
     likedList = []
@@ -28,7 +18,7 @@ def get_recommendations(customerID):
         testID = (someID[x],)
         mycursor.execute(sql, testID)
         likedCuisines.append(mycursor.fetchall())
-
+    # count each cuisine in a dictionary
     likedCuisinesCount = {}
     for x in range(len(likedCuisines)):
         for y in range(len(likedCuisines[x])):
@@ -36,20 +26,20 @@ def get_recommendations(customerID):
                 likedCuisinesCount[likedCuisines[x][y][0]] = likedCuisinesCount[likedCuisines[x][y][0]] + 1
             else:
                 likedCuisinesCount[likedCuisines[x][y][0]] = 1
-
-    cuisinesSorted = [0, 0, 0]
-
+    # sort the cuisines
+    cuisinesSorted = []
     for x in likedCuisinesCount:
-        if likedCuisinesCount[x] > cuisinesSorted[0]:
-            cuisinesSorted[2] = cuisinesSorted[1]
-            cuisinesSorted[1] = cuisinesSorted[0]
-            cuisinesSorted[0] = x
-        elif likedCuisinesCount[x] > cuisinesSorted[1]:
-            cuisinesSorted[2] = cuisinesSorted[1]
-            cuisinesSorted[1] = x
-        elif likedCuisinesCount[x] > cuisinesSorted[2]:
-            cuisinesSorted[2] = x
-
+        for y in range(amount):
+            try:
+                if likedCuisinesCount[x] > likedCuisinesCount[cuisinesSorted[y]]:
+                    cuisinesSorted.insert(y,  x)
+                    break
+                elif y == len(cuisinesSorted):
+                    cuisinesSorted.append(x)
+                    break
+            except Exception:
+                cuisinesSorted.append(x)
+                break
     cuisinesFinal = []
     for x in range(len(cuisinesSorted)):
         sql = "SELECT restaurant_id FROM restaurant_cuisine WHERE cuisine_id = %s"
@@ -65,19 +55,19 @@ def get_recommendations(customerID):
             else:
                 cuisinesFinal2[cuisinesFinal[x][y][0]] = 1
 
-    cuisinesFinalSorted = [0, 0, 0]
-
+    cuisinesFinalSorted = []
     for x in cuisinesFinal2:
-        if cuisinesFinal2[x] > cuisinesFinalSorted[0]:
-            cuisinesFinalSorted[2] = cuisinesFinalSorted[1]
-            cuisinesFinalSorted[1] = cuisinesFinalSorted[0]
-            cuisinesFinalSorted[0] = x
-        elif cuisinesFinal2[x] > cuisinesFinalSorted[1]:
-            cuisinesFinalSorted[2] = cuisinesFinalSorted[1]
-            cuisinesFinalSorted[1] = x
-        elif cuisinesFinal2[x] > cuisinesFinalSorted[2]:
-            cuisinesFinalSorted[2] = x
-
+        for y in range(amount):
+            try:
+                if cuisinesFinal2[x] > cuisinesFinal2[cuisinesFinalSorted[y]]:
+                    cuisinesFinalSorted.insert(y,  x)
+                    break
+                elif y == len(cuisinesFinalSorted):
+                    cuisinesFinalSorted.append(x)
+                    break
+            except Exception:
+                cuisinesFinalSorted.append(x)
+                break
     vegan = 0
     vegetarian = 0
     credit_card = 0
@@ -96,7 +86,7 @@ def get_recommendations(customerID):
         if likedList[x][5]:
             takeaway = takeaway + 1
 
-    return cuisinesFinalSorted
+    return cuisinesFinalSorted[0:amount]
 
 
 def getCustomerLiked(customerID):
