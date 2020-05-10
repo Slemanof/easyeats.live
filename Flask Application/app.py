@@ -64,7 +64,7 @@ def cuisines_option(filters):
             filtered_by_cuisine = ("%s WHERE c.name = '%s' GROUP BY r.id " % (query_fragment, cuisines[0]))
 
         else:
-            filtered_by_cuisine = ("%s WHERE c.name = '%s' GROUP BY r.id " % (query_fragment, (cuisines,)))
+            filtered_by_cuisine = ("%s WHERE c.name in %s GROUP BY r.id " % (query_fragment, cuisines))
 
     else:
         filtered_by_cuisine = ("%s GROUP BY r.id " % query_fragment)
@@ -88,14 +88,14 @@ def location_option(cuisine_query, filters):
                 ) ) + sin( radians(%s
                 ) ) * sin( radians( latitute ))))""" % (lat, lon, lat))
 
-        filter_by_distance = ("""SELECT %s, cuisines,
+        filtered_by_distance = ("""SELECT %s, cuisines,
                    FORMAT(%s, 2) AS distance,
                    FORMAT((%s * 12), 1) AS time
                    FROM (%s) as t HAVING distance < 3 ORDER
                    BY distance""" % (query_fragment, formula, formula, cuisine_query))
 
     else:
-        filter_by_distance = ("SELECT * FROM (%s) as t" % cuisine_query)
+        filtered_by_distance = ("SELECT * FROM (%s) as t" % cuisine_query)
 
     return filter_by_distance
 
