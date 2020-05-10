@@ -8,7 +8,7 @@ import menu_checker
 
 
 with open('api.json') as creds:
-credentials = json.load(creds)
+    credentials = json.load(creds)
 
 zomato_api = credentials['zomato']
 
