@@ -19,9 +19,11 @@ def test_put_timings_interval():
     assert readtimigs.put_timings_interval('11:30 AM to 11:30 PM (Mon-Fri)', 'Mon-Fri', {}) == {
         'Monday': '11:30-11:30', 'Tuesday': '11:30-11:30', 'Wednesday': '11:30-11:30', 'Thursday': '11:30-11:30', 'Friday': '11:30-11:30'}, 'put_timings_interval is bad'
     assert readtimigs.put_timings_interval('11:00 - 11:00 (Po-Pá)', 'Po-Pá', {}) == {
-        'Monday': '11:00-11:00', 'Tuesday': '11:00-11:00', 'Wednesday': '11:00-11:00', 'Thursday': '11:00-11:00', 'Friday': '11:00-11:00'}, 'put_timings_interval is bad'
+        'Monday': '11:00-11:00', 'Tuesday': '11:00-11:00', 'Wednesday': '11:00-11:00', 'Thursday': '11:00-11:00', 'Friday': '11:00-11:00'}, 'put_timings_interval is working incorrectly with czech days of the week'
 
 
 def test_put_timings_standalone():
     assert readtimigs.put_timings_standalone(
         '11:00 - 11:00 (Mon)', 'Mon', {}) == {'Monday': '11:00-11:00'}, 'put_timings_standalone is bad'
+    assert readtimigs.put_timings_standalone(
+        '11:00 - 11:00 (Út)', 'Út', {}) == {'Tuesday': '11:00-11:00'}
