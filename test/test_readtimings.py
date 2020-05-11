@@ -27,3 +27,8 @@ def test_put_timings_standalone():
         '11:00 - 11:00 (Mon)', 'Mon', {}) == {'Monday': '11:00-11:00'}, 'put_timings_standalone is bad'
     assert readtimigs.put_timings_standalone(
         '11:00 - 11:00 (Út)', 'Út', {}) == {'Tuesday': '11:00-11:00'}, 'put_timings_standalone is bad with czech days of the week'
+
+
+def test_sanitize_zomato_timings():
+    assert readtimigs.satitize_zomato_timings(
+        '11 AM to 11 PM (Mon-Fri)') == '11:00  11:00 (Mon-Fri)', 'sanitize_zomato_timings is bad'
