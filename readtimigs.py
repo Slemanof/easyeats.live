@@ -6,7 +6,7 @@ def findtime(time):
     if re.match(r'Closed', time):
         return 'Closed'
     result = ''
-    for time in re.findall(r"\d{2}:\d{2}", time):
+    for time in re.findall(r"\d{1,2}:\d{2}", time):
         result += time + "-"
     return result[:-1]
 
