@@ -13,7 +13,6 @@ zomato_api = credentials['zomato']
 
 
 def get_location_details(query):
-
     headers = {
         'Accept': 'application/json',
         'user-key': zomato_api,
@@ -37,7 +36,6 @@ def get_location_details(query):
 
 
 def get_restaurants(ent_id, ent_type, start):
-
     headers = {
         'Accept': 'application/json',
         'user-key': zomato_api,
@@ -49,7 +47,7 @@ def get_restaurants(ent_id, ent_type, start):
     )
 
     link = 'https://developers.zomato.com/api/v2.1/search?entity_id=90561&entity_type=zone&start=' + \
-        str(start)
+           str(start)
 
     response = requests.get(
         link, headers=headers, params=params)
@@ -130,14 +128,30 @@ for quater in get_quaters():
             if 'Takeaway Available' in (r["highlights"]):
                 takeaway = 1
 
-            phones_list = ['0', '0']
-            phones = r['phone_numbers']
-            for i in range(2):
-                phones_list[i] = phones[i]
+            phones = r['phone_numbers'].split(", ")
+
+
+            def save_phones():
+                phones_list = ['0', '0']
+
+                if len(phones) == 0:
+                    return phones_list
+                elif len(phones) == 1:
+                    phones_list[0] = phones[0]
+                    return phones_list
+                else:
+                    phones_list[0] = phones[0]
+                    phones_list[1] = phones[1]
+                    return phones_list
+
+
             print(get_menu(str(res_id)))
             try:
-                insertionMysql.insert(res_id, (r['name'].upper()), loc['address'], coordinates[0], coordinates[1], rating['aggregate_rating'], r['price_range'], r['cuisines'],
-                                      r['featured_image'],  vegan, vegetarian, card_payment, gluten_free, takeaway, phones_list[0], phones_list[1], r['timings'], str(get_menu(str(res_id))), r['menu_url'])
+                insertionMysql.insert(res_id, (r['name'].upper()), loc['address'], coordinates[0], coordinates[1],
+                                      rating['aggregate_rating'], r['price_range'], r['cuisines'],
+                                      r['featured_image'], vegan, vegetarian, card_payment, gluten_free, takeaway,
+                                      save_phones()[0], save_phones()[1], r['timings'], str(get_menu(str(res_id))),
+                                      r['menu_url'])
             except mysql.connector.errors.IntegrityError:
                 continue
             except:
