@@ -11,5 +11,5 @@ def test_findtime():
 def test_put_timings_order():
     assert readtimigs.put_timings_order('11:30 to 01:00 (Mon, Tue, Wed, Thu, Sun)', ['Mon', 'Tue', 'Wed', 'Thu', 'Sun'], {}) == {
         'Monday': '11:30-01:00', 'Tuesday': '11:30-01:00', 'Wednesday': '11:30-01:00', 'Thursday': '11:30-01:00', 'Sunday': '11:30-01:00'}, 'Function for putting time separated by coma is bad'
-    assert readtimigs.put_timings_order('11:00 - 11:00 (Po, Pá)', ['Po', 'Pá'], {}) == {
-        'Monday': '11:00-11:00', 'Friday': '11:00-11:00'}, 'Function for putting time separated by coma is bad'
+    assert readtimigs.put_timings_order('1:00 - 11:00 (Po, Pá)', ['Po', 'Pá'], {}) == {
+        'Monday': '1:00-11:00', 'Friday': '1:00-11:00'}, 'Function for putting time separated by coma is bad'
