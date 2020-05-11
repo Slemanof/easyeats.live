@@ -26,4 +26,4 @@ def test_put_timings_standalone():
     assert readtimigs.put_timings_standalone(
         '11:00 - 11:00 (Mon)', 'Mon', {}) == {'Monday': '11:00-11:00'}, 'put_timings_standalone is bad'
     assert readtimigs.put_timings_standalone(
-        '11:00 - 11:00 (Út)', 'Út', {}) == {'Tuesday': '11:00-11:00'}
+        '11:00 - 11:00 (Út)', 'Út', {}) == {'Tuesday': '11:00-11:00'}, 'put_timings_standalone is bad with czech days of the week'
