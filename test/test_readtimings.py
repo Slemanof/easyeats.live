@@ -23,4 +23,5 @@ def test_put_timings_interval():
 
 
 def test_put_timings_standalone():
-    assert readtimigs.put_timings_standalone('11:00 - 11:00 (Mon)', 'Mon', {}) == {'Monday': '11:00-11:00'}
+    assert readtimigs.put_timings_standalone(
+        '11:00 - 11:00 (Mon)', 'Mon', {}) == {'Monday': '11:00-11:00'}, 'put_timings_standalone is bad'
