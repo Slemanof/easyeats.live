@@ -32,3 +32,4 @@ def test_put_timings_standalone():
 def test_sanitize_zomato_timings():
     assert readtimigs.satitize_zomato_timings(
         '11 AM to 11 PM (Mon-Fri)') == '11:00  11:00 (Mon-Fri)', 'sanitize_zomato_timings is bad'
+    assert readtimigs.satitize_zomato_timings('11 AM - 12 Midnight') == '11:00 - 24:00', 'sanitize_zomato_timings has a problem with Midnights' 
