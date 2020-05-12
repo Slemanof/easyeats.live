@@ -38,3 +38,10 @@ def test_sanitize_zomato_timings():
         '12 Noon - 6 PM') == '12:00 - 6:00', 'satitize_zomato_timings has problem with opening hours that conatin word Noon'
     assert readtimigs.satitize_zomato_timings(
         '10 AM to 7 PM') == '10:00  7:00', 'satitize_zomato_timings has a problem with removing word <<to>>'
+
+
+def test_get_opening_hours():
+    assert readtimigs.get_opening_hrs(
+        '11:30 to 01:00 (Mon, Tue, Wed, Thu, Sun), 11:30 to 02:00 (Fri-Sat)') == '{"Monday": "11:30-01:00", "Tuesday": "11:30-01:00", "Wednesday": "11:30-01:00", "Thursday": "11:30-01:00", "Sunday": "11:30-01:00", "Friday": "11:30-02:00", "Saturday": "11:30-02:00"}', "The convertion to JSON is bad"
+    assert readtimigs.get_opening_hrs(
+        '11:00  - 12:00 (Mon-Sat), 11:00 - 12:00 (Sun)') == '{"Monday": "11:00-12:00", "Saturday": "11:00-12:00", "Tuesday": "11:00-12:00", "Wednesday": "11:00-12:00", "Thursday": "11:00-12:00", "Friday": "11:00-12:00", "Sunday": "11:00-12:00"}', "The convertion to JSON is bad"
