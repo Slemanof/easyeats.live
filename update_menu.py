@@ -2,6 +2,8 @@ import mysql.connector
 import requests
 import unidecode
 import json
+import menu_checker
+import err_handling
 
 with open('api.json') as creds:
     credentials = json.load(creds)
