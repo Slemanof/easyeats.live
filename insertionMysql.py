@@ -50,5 +50,5 @@ def insert(res_id, res_name, res_address, res_rating, res_cost, res_cuisine, res
     cnx.commit()
     cursor.close()
     cnx.close()
-    test_cuisines(res_id, res_cuisine)
+    cuisines(res_id, res_cuisine)
     return
