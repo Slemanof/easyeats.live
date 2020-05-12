@@ -9,10 +9,6 @@ test_menu_1 = '{"daily_menus": [], "status": "success"}'
 test_menu_2 = '{"code": 400, "status": "Bad Request", "message": "No Daily Menu Available"}'
 # using test_menu3 as input checks if output is correct for a correctly filled out menu
 test_menu_3 = '{"status": "success", "daily_menus": [{"daily_menu": {"name": "Takeaway", "dishes": [{"dish": {"name": "Cheesecake", "price": "200 CZK", "dish_id": "1"}},{"dish": {"name": "Chocolate cake", "price": "500 CZK", "dish_id": "2"}}, {"dish": {"name": "Schwarzwald cake", "price": "350 CZK", "dish_id": "3"}}]}}]}'
-# using test_menu4 as input checks if output is correct for an incorrectly filled out menu
-# test_menu_4 =
-
-# mc.menu_checker(test_menu_1)
 
 
 def test_menu_checker():
