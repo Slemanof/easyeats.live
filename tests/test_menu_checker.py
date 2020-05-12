@@ -13,11 +13,13 @@ test_menu_3 = '{"status": "success", "daily_menus": [{"daily_menu": {"name": "Ta
 
 def test_menu_checker():
     # Checking expected outputs
-    assert mc.menu_checker(test_menu_1) == '{"No daily menu at the moment": " "}'
-    assert mc.menu_checker(test_menu_2) == '{"No daily menu at the moment": " "}'
+    assert mc.menu_checker(
+        test_menu_1) == '{"No daily menu at the moment": " "}', "Incorrect Output"
+    assert mc.menu_checker(
+        test_menu_2) == '{"No daily menu at the moment": " "}', "Incorrect Output"
     # Checking output of dummy json
     assert mc.menu_checker(
-        test_menu_3) == '{"Cheesecake": "200 CZK", "Chocolate cake": "500 CZK", "Schwarzwald cake": "350 CZK"}'
+        test_menu_3) == '{"Cheesecake": "200 CZK", "Chocolate cake": "500 CZK", "Schwarzwald cake": "350 CZK"}', "Incorrect Output"
     #
 
 
