@@ -100,4 +100,4 @@ def location_option(cuisine_query, filters):
     return filtered_by_distance
 
 if __name__ == "__main__":
-    app.run(debug=True)
+    app.run()
