@@ -6,7 +6,7 @@ def findtime(time):
     if re.match(r'Closed', time):
         return 'Closed'
     result = ''
-    for time in re.findall(r"\d{2}:\d{2}", time):
+    for time in re.findall(r"\d{1,2}:\d{2}", time):
         result += time + "-"
     return result[:-1]
 
@@ -50,7 +50,7 @@ def get_opening_hrs(zomato_timing):
         zomato_timing = satitize_zomato_timings(zomato_timing)
         opening_hrs_dict = {}
         for row in zomato_timing.split("),"):
-            order_days = re.findall(r"[D-ZÚ]\w{1,2}(?=[, )])", row)
+            order_days = re.findall(r"[D-ZÚ]\w{1,2}", row)
             interval_days = re.findall(
                 r"[D-ZÚ]\w{1,2}-[D-ZÚ]\w{1,2}", row)
             standalone_days = re.findall(r"[D-ZÚ]\w{2}", row)
