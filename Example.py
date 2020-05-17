@@ -1,5 +1,5 @@
 import mysql.connector
-import Reccomender
+import Recommender
 
 mydb = mysql.connector.connect(
   host="localhost",
@@ -9,6 +9,6 @@ mydb = mysql.connector.connect(
 )
 
 mycursor = mydb.cursor()
-print(Reccomender.get_recommendations(1, mycursor, 4))
+print(Recommender.get_recommendations(1, mycursor, 4))
 
-print(Reccomender.get_recommendations(1, mycursor))
+print(Recommender.get_recommendations(1, mycursor))
