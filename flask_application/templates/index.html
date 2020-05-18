@@ -539,7 +539,12 @@
 
                                 <span
                                         class="restaurant-view__visible-card-cuisisne restaurant-view__option"
-                                >Cuisine: {{row[18]}}</span
+                                >Cuisine:
+                                    {% if row[18] %}
+                                        {{row[18]}}
+                                    {% elif row[16] %}
+                                        {{row[16]}}
+                                    {% endif %}</span
                                 ><span
                                     class="restaurant-view__visible-card-rating restaurant-view__option"
                             >Rating: {{row[4]}}</span
