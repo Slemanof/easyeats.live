@@ -1,6 +1,6 @@
 import json
 import pytest
-from easyeats.live import menu_checker as mc
+import menu_checker as mc
 
 
 # using test_menu1 as input checks if output is correct for status: success & empty menu
