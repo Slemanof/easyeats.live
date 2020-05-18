@@ -40,6 +40,6 @@ CREATE TABLE `user`(
 );
 
 CREATE TABLE `restaurant_user`(
-  `restaurant_id` int,
-   `user_id` int
+  `restaurant_id` int NOT NULL,
+   `user_id` int NOT NULL
 );
