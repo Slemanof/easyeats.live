@@ -33,7 +33,8 @@ CREATE TABLE `restaurant_cuisine` (
 );
 
 CREATE TABLE `user`(
-  `email` varchar(255) PRIMARY KEY,
+  `id` int PRIMARY KEY AUTO_INCREMENT,
+  `email` varchar(255),
   `name` varchar(255),
   `password` varchar(255)
 );
