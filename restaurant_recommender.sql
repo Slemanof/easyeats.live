@@ -38,3 +38,8 @@ CREATE TABLE `user`(
   `name` varchar(255),
   `password` varchar(255)
 );
+
+CREATE TABLE `restaurant_user`(
+  `restaurant_id` int,
+   `user_id` int
+);
