@@ -2,11 +2,14 @@ import mysql.connector
 import requests
 import unidecode
 import json
+import menu_checker
+import err_handling
 
 with open('api.json') as creds:
     credentials = json.load(creds)
 
 zomato_api = credentials['zomato']
+
 
 def get_menu(restaurant_id):
     headers = {
@@ -20,8 +23,13 @@ def get_menu(restaurant_id):
 
     data = response.json()
 
-    data = str(data).replace('\'', '\"')
+    data = str(data).replace('\'', '\"').replace("\\xa0", " ")
     data = unidecode.unidecode(data)
+    try:
+        data = menu_checker.menu_checker(data)
+    except json.decoder.JSONDecodeError:
+        err_handling.restaurant_error(restaurant_id, 'menu')
+        return '{"No daily menu at the moment":" "}'
     return data
 
 
