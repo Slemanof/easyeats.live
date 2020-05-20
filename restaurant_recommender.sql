@@ -42,5 +42,6 @@ CREATE TABLE `user`(
 
 CREATE TABLE `restaurant_user`(
   `restaurant_id` int NOT NULL,
-   `user_id` int NOT NULL
+   `user_id` int NOT NULL,
+   PRIMARY KEY(`restaurant_id`, `user_id`)
 );
