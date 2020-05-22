@@ -15,7 +15,7 @@ mysql = MySQL(app)
 
 @app.route('/home', methods=['GET', 'POST'])
 def home():
-    current_user = 1
+    current_user = 0
     cursor = mysql.connection.cursor()
     chosen_filters = request.args.to_dict(flat=False)
 
