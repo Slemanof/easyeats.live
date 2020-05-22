@@ -20,15 +20,15 @@ def home():
     chosen_filters = request.args.to_dict(flat=False)
 
     if chosen_filters == {}:
-        data = recommendations(current_user)
+        data = recommendations(current_user, cursor)
     else:
 
         cuisines_option_query = cuisines_option(chosen_filters)
 
         location_option_query = location_option(cuisines_option_query, chosen_filters)
 
-    cursor.execute(additional_options(location_option_query, chosen_filters))
-    data = cursor.fetchall()
+        cursor.execute(additional_options(location_option_query, chosen_filters))
+        data = cursor.fetchall()
 
     new_data = []
     for i in data:
@@ -112,8 +112,7 @@ def location_option(cuisine_query, filters):
     return filter_by_distance
 
 
-def recommendations(user_id):
-    cur = mysql.connection.cursor()
+def recommendations(user_id, cur):
     check_user = """SELECT EXISTS(SELECT user_id FROM restaurant_user WHERE user_id = %s)""" % user_id
     cur.execute(check_user)
     check_user_result = cur.fetchone()
