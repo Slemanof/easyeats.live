@@ -46,33 +46,43 @@
             src="../static/img/logo.png"
           />
 
-            <div class="main__header__sort-controller">
-                <span>Sort by:&nbsp&nbsp</span>
-                <select class="main__header__sort-select" id="sortOptions">
-                    <p>
-                        <option class="main__header__sort-opt" value="rating-sort-desc"
-                        >Rating from high to low
-                        </option>
-                    </p>
-                    <p>
-                        <option class="main__header__sort-opt" value="rating-sort-asc"
-                        >Rating from low to high
-                        </option>
-                    </p>
-                    <p>
-                        <option class="main__header__sort-opt" value="price-sort-asc"
-                        >Price from low to high
-                        </option>
-                    </p>
-                    <p>
-                        <option class="main__header__sort-opt" value="price-sort-desc"
-                        >Price from high to low
-                        </option>
-                    </p>
-                </select
-                >
+          <div class="main__header__sort-controller">
+            <div class="main__header__sort-box">
+              <select class="main__header__sort-select" id="sortOptions">
+                <p>
+                  <option class="main__header__sort-opt">Sort by:</option>
+                </p>
+                <p>
+                  <option
+                    class="main__header__sort-opt"
+                    value="rating-sort-desc"
+                    >Rating from high to low
+                  </option>
+                </p>
+                <p>
+                  <option class="main__header__sort-opt" value="rating-sort-asc"
+                    >Rating from low to high
+                  </option>
+                </p>
+                <p>
+                  <option class="main__header__sort-opt" value="price-sort-asc"
+                    >Price from low to high
+                  </option>
+                </p>
+                <p>
+                  <option class="main__header__sort-opt" value="price-sort-desc"
+                    >Price from high to low
+                  </option>
+                </p>
+              </select>
+              <div class="main__header__sort-svg">
+                <svg class="main__header__play-icon">
+                  <use xlink:href="../static/img/sprite.svg#icon-play3"></use>
+                </svg>
+              </div>
             </div>
-
+          </div>
+          <button class="btn-logout btn--grey">Logout</button>
         </div>
         <div class="main__content">
           <section class="main__sidebar">
@@ -845,57 +855,66 @@
                   </div>
                 </div>
               </div>
-                <div class="restaurant-view__bottom-block">
-                    <div class="restaurant-view__bottom-block-options">
-                        <div class="restaurant-view__bottom-block-left">
-                            {% if row[7] == 1 %}
-                            <span>Vegan options</span>
-                            {% endif %}
+              <div class="restaurant-view__bottom-block">
+                <div class="restaurant-view__bottom-block-options">
+                    <div class="restaurant-view__bottom-block-left">
+                        {% if row[7] == 1 %}
+                        <span>Vegan options</span>
+                        {% endif %} {% if row[8] == 1 %}
+                        <span>Vegetarian options</span>
+                        {% endif %} {% if row[9] == 1 %}
+                        <span>Gluten Free options</span>
+                        {% endif %} {% if row[10] == 1 %}
+                        <span
+                                class="restaurant-view__bottom-block-card-payement restaurant-view__option"
+                        >
+                        Payment by card: Cards are accepted</span
+                        >
 
-                            {% if row[8] == 1 %}
-                            <span>Vegetarian options</span>
-                            {% endif %}
+                        {% else %}
+                        <span
+                                class="restaurant-view__bottom-block-card-payement restaurant-view__option"
+                        >
+                        Payment by card: Cards are not accepted</span
+                        >
+                        {% endif %} {% if row[11] == 1 %}
+                        <span
+                                class="restaurant-view__bottom-block-takeaway restaurant-view__option"
+                        >
+                        Takeaway option</span
+                        >
 
-                            {% if row[9] == 1 %}
-                            <span>Gluten Free options</span>
-                            {% endif %}
+                        {% else %}
+                        <span
+                                class="restaurant-view__bottom-block-takeaway restaurant-view__option"
+                        >
+                        No takeaway option</span
+                        >
+                        {% endif %}
 
-                            {% if row[10] == 1 %}
-                            <span class="restaurant-view__bottom-block-card-payement restaurant-view__option">
-                            Payment by card: Cards are accepted
-                            </span>
-                            {% else %}
-                            <span class="restaurant-view__bottom-block-card-payement restaurant-view__option">
-                            Payment by card: Cards are not accepted
-                            </span>
-                            {% endif %}
+                        {% if row[12]!='0' %}
+                        <span
+                                class="restaurant-view__bottom-block-phone restaurant-view__option"
+                        >Phone number:
+                      {{row[12]}}
+                    </span>
+                        {% endif %}
 
-                            {% if row[11] == 1 %}
-                            <span class="restaurant-view__bottom-block-takeaway restaurant-view__option">
-                            Takeaway option</span>
-                            {% else %}
-                            <span class="restaurant-view__bottom-block-takeaway restaurant-view__option">
-                            No takeaway option</span>
-                            {% endif %}
-
-                            {% if row[12]!='0' %}
-                            <span class="restaurant-view__bottom-block-phone restaurant-view__option">
-                                Phone number 2: {{row[12]}}
-                            </span>
-                            {% endif %}
-
-                            {% if row[13]!='0' %}
-                            <span class="restaurant-view__bottom-block-phone restaurant-view__option">
-                                Phone number 1: {{row[13]}}
-                            </span>
-                            {% endif %}
-                            <a
+                        {% if row[13]!='0' %}
+                        <span
+                                class="restaurant-view__bottom-block-phone restaurant-view__option"
+                        >Phone number:
+                      {{row[13]}}
+                    </span>
+                        {% endif %}
+                        <a
                                 class="restaurant-view__bottom-block-menu-url restaurant-view__option"
                                 href="{{row[14]}}"
                                 target="_blank">
-                                Usual menu
-                            </a>
-                        </div>
+                            Usual menu
+                        </a>
+
+                    </div>
 
                  <div class="restaurant-view__bottom-block-right">
                      <h3>Opening Hours</h3>
@@ -904,26 +923,28 @@
                     {% endfor %}
                  </div>
                 </div>
+                <div class="restaurant-view__bottom-block-daily-menu">
+                  <div class="restaurant-view__bottom-block-daily-menu-header">
+                    <h3>Daily menu</h3>
+                  </div>
 
-                        <div class="restaurant-view__bottom-block-daily-menu">
-                            <div class="restaurant-view__bottom-block-daily-menu-header">
-                            <h3>Daily menu</h3>
-                            </div>
-                            <div class="restaurant-view__bottom-block-daily-menu-menu__block">
-                                {% for dish, price in row[15].items() %}
-                                <div class = "restaurant-view__daily-menu-wrap">
-                                  <div class="restaurant-view__daily-menu-dish restaurant-view__daily-menu-options">
-                                    {{ dish }}
-                                  </div>
-                                  <div class="restaurant-view__daily-menu-price restaurant-view__daily-menu-options">
-                                    {{ price }}
-                                  </div>
-                                </div>
-                                {% endfor %}
-                            </div>
-                        </div>
-
+                  <div
+                    class="restaurant-view__bottom-block-daily-menu-menu__block"
+                  >
+                    {% for dish, price in row[15].items() %}
+                    <div class = "restaurant-view__daily-menu-wrap">
+                      <div class="restaurant-view__daily-menu-dish restaurant-view__daily-menu-options">
+                        {{ dish }}
+                      </div>
+                      <div class="restaurant-view__daily-menu-price restaurant-view__daily-menu-options">
+                        {{ price }}
+                      </div>
                     </div>
+                    {% endfor %}
+
+                  </div>
+                </div>
+              </div>
               <div class="restaurant-view__show-more">
                 <span>Show more</span>
               </div>
@@ -952,6 +973,7 @@
     <script src="../static/js/restCard.js"></script>
     <script src="../static/js/filter.js"></script>
     <script src="../static/js/filterOpen.js"></script>
+    <script src="../static/js/logout.js"></script>
     <script src="../static/js/favourites.js"></script>
   </body>
 </html>
