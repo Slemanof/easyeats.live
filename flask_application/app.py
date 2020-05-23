@@ -93,8 +93,10 @@ def logout():
 
 
 @app.route('/home', methods=['GET', 'POST'])
+@jwt_required
 def home():
-    current_user = 1
+    current_user = get_jwt_identity()
+
     cursor = mysql.connection.cursor()
     chosen_filters = request.args.to_dict(flat=False)
 
