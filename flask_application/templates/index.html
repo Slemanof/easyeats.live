@@ -498,7 +498,7 @@
                     </div>
                     <a
                             class="main__filter__body-search-btn main__filter__body-search-btn--grey"
-                            href="/"
+                            href="/home"
                     >Search
                     </a>
                 </div>
@@ -513,7 +513,23 @@
                         <div class="restaurant-view__card-info">
                             <div class="restaurant-view__card-info-top">
                                 <h3 class="restaurant-view__card-name">{{row[1]}}</h3>
-                                <button class="restaurant-view__like-btn">Like</button>
+                                {% if row[0] in like_list %}
+                                <button class="restaurant-view__like-btn" data-rest-id="{{row[0]}}">
+                                    <svg class="restaurant-view__full-star-icon restaurant-view__like-svg">
+                                        <use
+                                                xlink:href="../static/img/sprite.svg#icon-star-full"
+                                        ></use>
+                                    </svg>
+                                </button>
+                                {% else %}
+                                <button class="restaurant-view__like-btn" data-rest-id="{{row[0]}}">
+                                    <svg class="restaurant-view__empty-star-icon restaurant-view__like-svg">
+                                        <use
+                                                xlink:href="../static/img/sprite.svg#icon-star-empty"
+                                        ></use>
+                                    </svg>
+                                </button>
+                                {% endif %}
                             </div>
                             <div class="restaurant-view__card-info-middle">
                       <span
@@ -605,7 +621,7 @@
 <script src="../static/js/restCard.js"></script>
 <script src="../static/js/filters.js"></script>
 <script src="../static/js/filterOpen.js"></script>
-
+<script src="../static/js/favourites.js"></script>
 
 </body>
 </html>

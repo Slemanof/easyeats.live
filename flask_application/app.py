@@ -12,17 +12,19 @@ app.config['MYSQL_DB'] = ''
 
 mysql = MySQL(app)
 
-@app.route('/')
+
+@app.route('/home', methods=['GET', 'POST'])
 def home():
-    cur = mysql.connection.cursor()
+    current_user = 0
+    cursor = mysql.connection.cursor()
     chosen_filters = request.args.to_dict(flat=False)
 
     cuisines_option_query = cuisines_option(chosen_filters)
 
     location_option_query = location_option(cuisines_option_query, chosen_filters)
 
-    cur.execute(additional_options(location_option_query, chosen_filters))
-    data = cur.fetchall()
+    cursor.execute(additional_options(location_option_query, chosen_filters))
+    data = cursor.fetchall()
 
     new_data = []
     for i in data:
@@ -32,7 +34,13 @@ def home():
         i[6] = json.loads(i[6])
         i[15] = json.loads(i[15])
 
-    return render_template('index.html', data=new_data)
+    like_list = check_liked_restaurants(current_user, cursor)
+
+    if request.method == "POST":
+        like_and_unlike(current_user, cursor)
+
+    return render_template('index.html', data=new_data, like_list=like_list)
+
 
 
 def additional_options(query, filters):
@@ -98,6 +106,42 @@ def location_option(cuisine_query, filters):
         filtered_by_distance = ("SELECT * FROM (%s) as t" % cuisine_query)
 
     return filtered_by_distance
+
+
+def check_liked_restaurants(user_id, cur):
+    liked_restaurants = []
+    check_user_query = """SELECT EXISTS(SELECT user_id FROM restaurant_user WHERE user_id = %s)""" % user_id
+    cur.execute(check_user_query)
+    check_user_result = cur.fetchone()
+
+    if check_user_result[0] == 0:
+        return liked_restaurants
+    else:
+        liked_restaurants_query = """SELECT restaurant_id FROM restaurant_user WHERE user_id = %s""" % user_id
+        cur.execute(liked_restaurants_query)
+        liked_restaurants_result = cur.fetchall()
+        for rest_id in liked_restaurants_result:
+            liked_restaurants.append(rest_id[0])
+        return liked_restaurants
+
+    
+def like_and_unlike(user_id, cur):
+    rest_id = request.json.get('restId', None)
+    print(rest_id)
+
+    check_if_liked_query = "SELECT EXISTS(SELECT * FROM restaurant_user WHERE user_id = %s AND restaurant_id = %s ) " \
+                           % (user_id, rest_id)
+
+    cur.execute(check_if_liked_query)
+    check_result = cur.fetchone()
+    if check_result[0] == 0:
+        query = "INSERT INTO restaurant_user (restaurant_id, user_id) VALUES (%s, %s)" % (rest_id, user_id)
+
+    else:
+        query = "DELETE FROM restaurant_user WHERE restaurant_id = %s AND user_id = %s " % (rest_id, user_id)
+
+    cur.execute(query)
+    mysql.connection.commit()
 
 if __name__ == "__main__":
     app.run()
