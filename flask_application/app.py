@@ -25,6 +25,37 @@ app.config['MYSQL_PASSWORD'] = ''
 app.config['MYSQL_DB'] = ''
 
 
+@app.route('/signup', methods=["GET", "POST"])
+def signup():
+    if request.method == "POST":
+        name = escape_string(request.json.get('name', None)).decode()
+        email = escape_string(request.json.get('email', None)).decode()
+        password = request.json.get('password', None)
+        confirm = request.json.get('confirm', None)
+
+        cur = mysql.connection.cursor()
+
+        if password == confirm:
+            query_email = "SELECT EXISTS(SELECT email FROM user WHERE email = '%(email)s') " % {"email": email}
+            cur.execute(query_email)
+            check_email = cur.fetchone()
+
+            secure_password = bcrypt.hashpw(password.encode('utf-8'), bcrypt.gensalt(12)).decode('utf-8')
+
+            if check_email[0] == 0:
+                query_insert = ("""INSERT INTO user(name, email, password)
+                                VALUES ('%(name)s', '%(email)s', '%(password)s')""" %
+                                {"email": email, "name": name, "password": secure_password})
+                cur.execute(query_insert)
+                mysql.connection.commit()
+                return jsonify({'signup': True})
+            else:
+                return jsonify({"msg": "This e-mail is already in use"}), 401
+        else:
+            return jsonify({"msg": "Passwords do not match"}), 401
+    return render_template('signup.html')
+
+
 @app.route('/home', methods=['GET', 'POST'])
 def home():
     current_user = 1
