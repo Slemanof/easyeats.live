@@ -56,6 +56,35 @@ def signup():
     return render_template('signup.html')
 
 
+@app.route('/login', methods=["GET", "POST"])
+def login():
+    if request.method == "POST":
+        email = escape_string(request.json.get('email', None)).decode()
+        password = request.json.get('password', None)
+
+        cur = mysql.connection.cursor()
+        check_email = "SELECT EXISTS(SELECT email FROM user WHERE email = '%(email)s') " % {"email": email}
+        cur.execute(check_email)
+        check_email = cur.fetchone()
+
+        if check_email[0] == 0:
+            return jsonify({"msg": "Incorrect credentials"}), 401
+        else:
+            query = "SELECT * FROM user WHERE email = '%(email)s' " % {"email": email}
+            cur.execute(query)
+            data = cur.fetchone()
+
+            if bcrypt.checkpw(password.encode('utf-8'), data[3].encode('utf-8')):
+                access_token = create_access_token(identity=data[0])
+                resp = jsonify({'login': True})
+                set_access_cookies(resp, access_token)
+                return resp
+            else:
+                return jsonify({"msg": "Incorrect credentials"}), 401
+
+    return render_template('login.html')
+
+
 @app.route('/home', methods=['GET', 'POST'])
 def home():
     current_user = 1
