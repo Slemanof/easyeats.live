@@ -239,16 +239,57 @@ body {
   align-items: center;
   margin-bottom: 1rem;
 }
-.main__header__sort-select {
-      outline: none; }
-    .main__header__logo {
-      height: 4.25rem;
-      margin-left: 3rem; }
 
-    .main__header__sort-controller {
-      margin-right: 3rem;
-      color: #000;
-      outline: none; }
+.main__header__sort-select {
+  outline: none;
+  background-color: #f0eeee;
+  color: #000;
+  width: 24rem;
+  height: 4rem;
+  border: none;
+  padding: 1rem;
+  font-size: 1.7rem;
+  cursor: pointer;
+}
+
+.main__header__sort-opt {
+  height: 4rem;
+}
+
+.main__header__sort-box {
+  position: relative;
+}
+
+.main__header__sort-svg {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 4rem;
+  height: 4rem;
+  background-color: #f0eeee;
+  pointer-events: none;
+}
+
+.main__header__play-icon {
+  width: 50%;
+  height: 50%;
+  pointer-events: none;
+  fill: #000;
+  transform: rotate(90deg) translateX(50%) translateY(-50%);
+}
+
+.restaurant-view__play-icon-rotate {
+  transform: rotate(-90deg);
+}
+
+.main__header__sort-box:hover::before {
+  background-color: #fff;
+}
+
+.main__header__logo {
+  height: 4.25rem;
+  margin-left: 3rem;
+}
 
 .main__content {
   display: flex;
@@ -455,6 +496,17 @@ body {
   transition: max-height 1.5s, opacity 1s;
   pointer-events: none;
 }
+.main .restaurant-view__bottom-block-options {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.main .restaurant-view__bottom-block-left{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
 
 .main .restaurant-view__bottom-block-visable {
   max-height: 5000px;
@@ -487,17 +539,10 @@ body {
     justify-content: space-between;
 }
 
-.main .restaurant-view__bottom-block-options {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
+.main .restaurant-view__daily-menu-options {
+   padding: 1rem;
 }
 
-.main .restaurant-view__bottom-block-left{
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-}
 .main .restaurant-view__show-more {
   position: relative;
   width: 25%;
@@ -550,6 +595,281 @@ body {
   color: #fff;
 }
 
+.login-signup-form {
+  display: flex;
+  flex-direction: column;
+  margin: 0 auto;
+  max-width: 55rem;
+  background-color: #fff;
+  -webkit-box-shadow: 0 2.5rem 8rem 2rem rgba(0, 0, 0, 0.06);
+  box-shadow: 0 2.5rem 8rem 2rem rgba(0, 0, 0, 0.06);
+  padding: 5rem 7rem;
+  border-radius: 5px;
+}
+
+.ma-bt-lg {
+  margin-bottom: 3.5rem !important;
+}
+
+.heading-secondary {
+  align-self: center;
+  font-size: 2.25rem;
+  text-transform: uppercase;
+  font-weight: 700;
+  background-image: -webkit-gradient(
+    linear,
+    left top,
+    right top,
+    from(#7dd56f),
+    to(#28b487)
+  );
+  background-image: linear-gradient(to right, #7dd56f, #28b487);
+  -webkit-background-clip: text;
+  color: transparent;
+  letter-spacing: 0.1rem;
+  line-height: 1.3;
+  display: inline-block;
+}
+.form__input {
+  display: block;
+  font-family: inherit;
+  font-size: 1.5rem;
+  color: inherit;
+  padding: 1.25rem 1.75rem;
+  border: none;
+  width: 100%;
+  background-color: #fff;
+  background-color: #f2f2f2;
+  border-top: 3px solid transparent;
+  border-bottom: 3px solid transparent;
+  -webkit-transition: all 0.3s;
+  transition: all 0.3s;
+  border-radius: 4px;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  /* Pseudo element (a visible thing that isn't really in the DOM).
+          Also needs -ms- */
+}
+.form__input:focus {
+  outline: none;
+  border-bottom: 3px solid #55c57a;
+}
+.form__input:focus:invalid {
+  border-bottom: 3px solid #ff7730;
+}
+.form__input::-webkit-input-placeholder {
+  color: #bbb;
+}
+
+.form__group {
+  display: flex;
+  flex-direction: column;
+}
+
+.form__group:last-child {
+  flex-direction: row;
+  justify-content: center;
+}
+
+.form__group:not(:last-child) {
+  margin-bottom: 2.5rem;
+}
+
+.form__label {
+  display: block;
+  font-size: 1.6rem;
+  font-weight: 700;
+  margin-bottom: 0.75rem;
+}
+
+.btn-form {
+  flex-basis: 50%;
+  font-size: 1.6rem;
+  padding: 1.4rem 3rem;
+  border-radius: 10rem;
+  text-transform: uppercase;
+  display: inline-block;
+  text-decoration: none;
+  position: relative;
+  -webkit-transition: all 0.4s;
+  transition: all 0.4s;
+  font-weight: 400;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+  border: none;
+  cursor: pointer;
+  outline: none;
+}
+.btn--green {
+  background-color: #55c57a;
+  color: #fff;
+}
+.btn--green::after {
+  background-color: #55c57a;
+}
+
+.btn-form:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+}
+
+.btn-form::after {
+  content: "";
+  display: inline-block;
+  height: 100%;
+  width: 100%;
+  border-radius: 100px;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: -1;
+  transition: all 0.4s;
+}
+
+.btn-form:hover::after {
+  transform: scaleX(1.4) scaleY(1.6);
+  opacity: 0;
+}
+
+.btn-form:active {
+  transform: translateY(-1px);
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+}
+
+.link-block {
+  margin: 1rem auto;
+  max-width: 55rem;
+  display: flex;
+  justify-content: center;
+}
+
+.btn-form-link:link,
+.btn-form-link:visited {
+  position: relative;
+  font-size: 2rem;
+  padding: 1.2rem 10rem;
+  letter-spacing: 0.5rem;
+  border-radius: 10rem;
+  text-transform: uppercase;
+  text-decoration: none;
+  font-weight: 600;
+  -webkit-transition: all 0.4s;
+  transition: all 0.4s;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+  border: none;
+  cursor: pointer;
+  outline: none;
+  margin-right: 0.5rem;
+  margin-left: 0.5rem;
+}
+
+.btn-form-link:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+}
+
+.btn-form-link::after {
+  content: "";
+  display: inline-block;
+  height: 100%;
+  width: 100%;
+  border-radius: 100px;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: -1;
+  transition: all 0.4s;
+}
+
+.btn-form-link:hover::after {
+  transform: scaleX(1.4) scaleY(1.6);
+  opacity: 0;
+}
+
+.btn-form-link:active {
+  transform: translateY(-1px);
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+}
+
+.btn-logout {
+  position: relative;
+  font-size: 1.4rem;
+  padding: 1.2rem 2.6rem;
+  border-radius: 10rem;
+  text-transform: uppercase;
+  display: inline-block;
+  text-decoration: none;
+  -webkit-transition: all 0.4s;
+  transition: all 0.4s;
+  font-weight: 400;
+  -webkit-backface-visibility: hidden;
+  border: none;
+  cursor: pointer;
+  outline: none;
+  margin-right: 3rem;
+}
+
+.btn-logout:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+}
+
+.btn-logout::after {
+  content: "";
+  display: inline-block;
+  height: 100%;
+  width: 100%;
+  border-radius: 100px;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: -1;
+  transition: all 0.4s;
+}
+
+.btn-logout:hover::after {
+  transform: scaleX(1.4) scaleY(1.6);
+  opacity: 0;
+}
+
+.btn-logout:active {
+  transform: translateY(-1px);
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+}
+
+.btn--grey {
+  background-color: #777;
+  color: #fff;
+}
+
+.btn--grey::after {
+  background-color: #777;
+}
+
+.alert {
+  position: fixed;
+  top: 0;
+  left: 50%;
+  -webkit-transform: translateX(-50%);
+  transform: translateX(-50%);
+  z-index: 9999;
+  color: #fff;
+  font-size: 1.8rem;
+  font-weight: 400;
+  text-align: center;
+  border-bottom-left-radius: 5px;
+  border-bottom-right-radius: 5px;
+  padding: 1.6rem 15rem;
+  -webkit-box-shadow: 0 2rem 4rem rgba(0, 0, 0, 0.25);
+  box-shadow: 0 2rem 4rem rgba(0, 0, 0, 0.25);
+}
+.alert--success {
+  background-color: #20bf6b;
+}
+.alert--error {
+  background-color: #eb4d4b;
+}
 .restaurant-view__like-btn {
   width: 3rem;
   height: 3rem;
@@ -573,6 +893,52 @@ body {
 
 .restaurant-view__full-star-icon {
   fill: #ffd800;
+}
+
+.tooltip-content {
+  display: block;
+  position: absolute;
+  background-color: white;
+  top: 30%;
+  left: -90%;
+  width: 100%;
+  max-width: 35rem;
+  min-width: 30rem;
+  padding: 0.5rem;
+  border: 1px solid #e9e9e9;
+  box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.15);
+}
+
+.tooltip-toggle {
+  display: none;
+}
+
+
+.form__group-tooltip {
+  position: relative;
+}
+
+.tooltip-arrow {
+  background-color: white;
+  position: absolute;
+  z-index: 1;
+  bottom: 50%;
+  left: calc(100% - 1rem);
+  transform: translateY(50%) rotate(-90deg);
+  width: 2rem;
+  height: 2.5rem;
+  overflow: hidden;
+}
+.tooltip-arrow:before {
+  content: '';
+  position: absolute;
+  top: -4px;
+  left: 50%;
+  width: 2rem;
+  height: 2rem;
+  background-color: #fff;
+  transform: translateX(-50%) rotate(45deg);
+  box-shadow: 8px 8px 9px -4px rgba(0, 0, 0, 0.15);
 }
 
 .restaurant-view__bottom-block-menu-url {
