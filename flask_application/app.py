@@ -1,21 +1,33 @@
+from flask import Flask, render_template, request, url_for, jsonify, config, make_response, redirect
+from flask_mysqldb import MySQL
+from MySQLdb import escape_string
+import bcrypt
 import json
 
-from flask import Flask, render_template, request
-from flask_mysqldb import MySQL
+from flask_jwt_extended import (
+    JWTManager, jwt_required, create_access_token,
+    get_jwt_identity, set_access_cookies, unset_jwt_cookies)
 
 app = Flask(__name__)
+jwt = JWTManager(app)
+mysql = MySQL(app)
+
+app.config['JWT_TOKEN_LOCATION'] = ['cookies']
+app.config['JWT_SECRET_KEY'] = 'super-secret'
+app.config['JWT_COOKIE_SECURE'] = False
+app.config['JWT_COOKIE_CSRF_PROTECT'] = False
+app.config['JWT_ACCESS_COOKIE_PATH'] = '/home'
+app.config['JWT_ACCESS_TOKEN_EXPIRES'] = timedelta(hours=2)
 
 app.config['MYSQL_HOST'] = ''
 app.config['MYSQL_USER'] = ''
 app.config['MYSQL_PASSWORD'] = ''
 app.config['MYSQL_DB'] = ''
 
-mysql = MySQL(app)
-
 
 @app.route('/home', methods=['GET', 'POST'])
 def home():
-    current_user = 0
+    current_user = 1
     cursor = mysql.connection.cursor()
     chosen_filters = request.args.to_dict(flat=False)
 
