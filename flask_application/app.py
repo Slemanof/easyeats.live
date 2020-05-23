@@ -1,8 +1,10 @@
-from flask import Flask, render_template, request, url_for, jsonify, config, make_response, redirect
+from flask import Flask, render_template, request, url_for, jsonify, redirect
 from flask_mysqldb import MySQL
 from MySQLdb import escape_string
 import bcrypt
 import json
+from datetime import timedelta
+
 
 from flask_jwt_extended import (
     JWTManager, jwt_required, create_access_token,
