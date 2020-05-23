@@ -117,28 +117,29 @@ def recommendations(user_id, cur):
     cur.execute(check_user)
     check_user_result = cur.fetchone()
 
-    if check_user_result[0] == 0:
-        top_restaurants_query = """SELECT r.id, r.name, r.address, r.image, r.rating, r.price_range, r.timing,
-                                r.vegan, r.vegetarian, r.gluten_free, r.credit_card, r.takeaway,
-                                r.phone_num1, r.phone_num2, r.usual_menu_url, r.menu,
-                                r.latitute, r.longitude, GROUP_CONCAT(c.name separator ', ') as cuisines
-                                FROM restaurant r LEFT JOIN
-                                restaurant_cuisine rc ON rc.restaurant_id = r.id LEFT JOIN
-                                cuisines c ON c.id = rc.cuisine_id
-                                GROUP BY r.id ORDER BY rating DESC"""
+    top_restaurants_query = """SELECT r.id, r.name, r.address, r.image, r.rating, r.price_range, r.timing,
+                                        r.vegan, r.vegetarian, r.gluten_free, r.credit_card, r.takeaway,
+                                        r.phone_num1, r.phone_num2, r.usual_menu_url, r.menu,
+                                        r.latitute, r.longitude, GROUP_CONCAT(c.name separator ', ') as cuisines
+                                        FROM restaurant r LEFT JOIN
+                                        restaurant_cuisine rc ON rc.restaurant_id = r.id LEFT JOIN
+                                        cuisines c ON c.id = rc.cuisine_id
+                                        GROUP BY r.id ORDER BY rating DESC"""
 
+    if check_user_result[0] == 0:
         cur.execute(top_restaurants_query)
-        recommended_data = cur.fetchall()
+        top_restaurants_result = cur.fetchall()
+        return top_restaurants_result
 
     else:
-        liked_restaurants = """SELECT restaurant_id FROM restaurant_user WHERE user_id = %s""" % user_id
+        liked_restaurants_query = """SELECT restaurant_id FROM restaurant_user WHERE user_id = %s""" % user_id
 
         cuisines_query = """SELECT cuisines.name FROM restaurant_cuisine JOIN restaurant
-        ON restaurant.id = restaurant_cuisine.restaurant_id JOIN cuisines
-        ON cuisines.id = restaurant_cuisine.cuisine_id WHERE restaurant.id in (%s)
-        GROUP BY cuisines.name
-        ORDER BY COUNT(*) DESC
-        LIMIT 3""" % liked_restaurants
+                            ON restaurant.id = restaurant_cuisine.restaurant_id JOIN cuisines
+                            ON cuisines.id = restaurant_cuisine.cuisine_id WHERE restaurant.id in (%s)
+                            GROUP BY cuisines.name
+                            ORDER BY COUNT(*) DESC
+                            LIMIT 3""" % liked_restaurants_query
 
         cur.execute(cuisines_query)
         cuisines_result = cur.fetchall()
@@ -151,47 +152,55 @@ def recommendations(user_id, cur):
         liked_cuisines = tuple(liked_cuisines)
 
         other_filters_query = """SELECT vegan, vegetarian, gluten_free, price_range
-                            FROM restaurant WHERE id in (%s)
-                            GROUP BY vegan, vegetarian, gluten_free, price_range
-                            ORDER BY COUNT(*) DESC LIMIT 1""" % liked_restaurants
+                                FROM restaurant WHERE id in (%s)
+                                GROUP BY vegan, vegetarian, gluten_free, price_range
+                                ORDER BY COUNT(*) DESC LIMIT 1""" % liked_restaurants_query
 
         cur.execute(other_filters_query)
         other_result = cur.fetchall()
 
         if len(liked_cuisines) == 1:
-            recommended_restaurants = """SELECT r.id, r.name, r.address, r.image, r.rating, r.price_range, r.timing,
-                                r.vegan, r.vegetarian, r.gluten_free, r.credit_card, r.takeaway,
-                                r.phone_num1, r.phone_num2, r.usual_menu_url, r.menu,
-                                GROUP_CONCAT(c.name separator ', ') as cuisines
-                                FROM restaurant r LEFT JOIN
-                                restaurant_cuisine rc
-                                ON rc.restaurant_id = r.id LEFT JOIN
-                                cuisines c
-                                ON c.id = rc.cuisine_id
-                                WHERE c.name = '%s' AND vegan = %s AND vegetarian = %s
-                                AND gluten_free = %s AND price_range = %s
-                                GROUP BY r.id
-                                """ % (liked_cuisines[0], other_result[0][0],
-                                       other_result[0][1], other_result[0][2], other_result[0][3])
+            recommended_restaurants_query = """SELECT r.id, r.name, r.address, r.image,
+                                    r.rating, r.price_range, r.timing,
+                                    r.vegan, r.vegetarian, r.gluten_free, r.credit_card, r.takeaway,
+                                    r.phone_num1, r.phone_num2, r.usual_menu_url, r.menu,
+                                    GROUP_CONCAT(c.name separator ', ') as cuisines
+                                    FROM restaurant r LEFT JOIN
+                                    restaurant_cuisine rc
+                                    ON rc.restaurant_id = r.id LEFT JOIN
+                                    cuisines c
+                                    ON c.id = rc.cuisine_id
+                                    WHERE c.name = '%s' AND vegan = %s AND vegetarian = %s
+                                    AND gluten_free = %s AND price_range = %s
+                                    GROUP BY r.id
+                                    """ % (liked_cuisines[0], other_result[0][0],
+                                           other_result[0][1], other_result[0][2], other_result[0][3])
         else:
-            recommended_restaurants = """SELECT r.id, r.name, r.address, r.image, r.rating, r.price_range, r.timing,
-                                r.vegan, r.vegetarian, r.gluten_free, r.credit_card, r.takeaway,
-                                r.phone_num1, r.phone_num2, r.usual_menu_url, r.menu,
-                                GROUP_CONCAT(c.name separator ', ') as cuisines
-                                FROM restaurant r LEFT JOIN
-                                restaurant_cuisine rc
-                                ON rc.restaurant_id = r.id LEFT JOIN
-                                cuisines c
-                                ON c.id = rc.cuisine_id
-                                WHERE c.name in %s AND vegan = %s AND vegetarian = %s
-                                AND gluten_free = %s AND price_range = %s
-                                GROUP BY r.id
-                                """ % (liked_cuisines, other_result[0][0],
-                                       other_result[0][1], other_result[0][2], other_result[0][3])
-            cur.execute(recommended_restaurants)
+            recommended_restaurants_query = """SELECT r.id, r.name, r.address, r.image,
+                                    r.rating, r.price_range, r.timing,
+                                    r.vegan, r.vegetarian, r.gluten_free, r.credit_card, r.takeaway,
+                                    r.phone_num1, r.phone_num2, r.usual_menu_url, r.menu,
+                                    GROUP_CONCAT(c.name separator ', ') as cuisines
+                                    FROM restaurant r LEFT JOIN
+                                    restaurant_cuisine rc
+                                    ON rc.restaurant_id = r.id LEFT JOIN
+                                    cuisines c
+                                    ON c.id = rc.cuisine_id
+                                    WHERE c.name in %s AND vegan = %s AND vegetarian = %s
+                                    AND gluten_free = %s AND price_range = %s
+                                    GROUP BY r.id
+                                    """ % (liked_cuisines, other_result[0][0],
+                                           other_result[0][1], other_result[0][2], other_result[0][3])
+
+            cur.execute(recommended_restaurants_query)
         recommended_data = cur.fetchall()
 
-    return recommended_data
+        if len(recommended_data) <= 3:
+            cur.execute(top_restaurants_query)
+            top_restaurants_result = cur.fetchall()
+            return top_restaurants_result
+        else:
+            return recommended_data
 
 
 
