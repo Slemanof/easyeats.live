@@ -92,6 +92,16 @@ def logout():
     return resp, 200
 
 
+@jwt.expired_token_loader
+def my_expired_token_callback(callback):
+    return redirect(url_for('login'))
+
+
+@jwt.unauthorized_loader
+def unauthorized_loader_handler(callback):
+    return redirect(url_for('login'))
+
+
 @app.route('/home', methods=['GET', 'POST'])
 @jwt_required
 def home():
