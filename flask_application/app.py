@@ -85,6 +85,13 @@ def login():
     return render_template('login.html')
 
 
+@app.route('/logout')
+def logout():
+    resp = jsonify({'logout': True})
+    unset_jwt_cookies(resp)
+    return resp, 200
+
+
 @app.route('/home', methods=['GET', 'POST'])
 def home():
     current_user = 1
