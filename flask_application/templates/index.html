@@ -47,22 +47,22 @@
                 <select class="main__header__sort-select" id="sortOptions">
                     <p>
                         <option class="main__header__sort-opt" value="rating-sort-desc"
-                        >Rating fom high to low
+                        >Rating from high to low
                         </option>
                     </p>
                     <p>
                         <option class="main__header__sort-opt" value="rating-sort-asc"
-                        >Rating fom low to high
+                        >Rating from low to high
                         </option>
                     </p>
                     <p>
                         <option class="main__header__sort-opt" value="price-sort-asc"
-                        >Price fom low to high
+                        >Price from low to high
                         </option>
                     </p>
                     <p>
                         <option class="main__header__sort-opt" value="price-sort-desc"
-                        >Price fom high to low
+                        >Price from high to low
                         </option>
                     </p>
                 </select
@@ -495,8 +495,12 @@
 
                         </div>
                     </div>
-                    <a class="main__filter__body-search-btn main__filter__body-search-btn--grey" href="/">
-                        Search
+
+                    <a
+                            class="main__filter__body-search-btn main__filter__body-search-btn--grey"
+                            href="/home"
+                    >Search
+
                     </a>
                 </div>
             </section>
@@ -510,31 +514,51 @@
                         <div class="restaurant-view__card-info">
                             <div class="restaurant-view__card-info-top">
                                 <h3 class="restaurant-view__card-name">{{row[1]}}</h3>
-                                <button class="restaurant-view__like-btn">Like</button>
+                                {% if row[0] in like_list %}
+                                <button class="restaurant-view__like-btn" data-rest-id="{{row[0]}}">
+                                    <svg class="restaurant-view__full-star-icon restaurant-view__like-svg">
+                                        <use
+                                                xlink:href="../static/img/sprite.svg#icon-star-full"
+                                        ></use>
+                                    </svg>
+                                </button>
+                                {% else %}
+                                <button class="restaurant-view__like-btn" data-rest-id="{{row[0]}}">
+                                    <svg class="restaurant-view__empty-star-icon restaurant-view__like-svg">
+                                        <use
+                                                xlink:href="../static/img/sprite.svg#icon-star-empty"
+                                        ></use>
+                                    </svg>
+                                </button>
+                                {% endif %}
                             </div>
                             <div class="restaurant-view__card-info-middle">
-                                <span class="restaurant-view__visible-card-address restaurant-view__option">
-                                    Address: {{row[2]}}
-                                </span>
 
-                                <span class="restaurant-view__visible-card-cuisisne restaurant-view__option">
-                                    Cuisine: {{row[18]}}</span>
+                      <span
+                              class="restaurant-view__visible-card-address restaurant-view__option">
+                          Address: {{row[2]}}
+                      </span>
 
-
-                                <span class="restaurant-view__visible-card-rating restaurant-view__option">
-                                    Rating: {{row[4]}}
-                                </span>
-
-                                <span class="restaurant-view__visible-card-price restaurant-view__option">
-                                    Price range: {{row[5]}}
-                                </span>
-
+                                <span
+                                        class="restaurant-view__visible-card-cuisisne restaurant-view__option"
+                                >Cuisine:
+                                    {% if row[18] %}
+                                        {{row[18]}}
+                                    {% elif row[16] %}
+                                        {{row[16]}}
+                                    {% endif %}</span
+                                ><span
+                                    class="restaurant-view__visible-card-rating restaurant-view__option"
+                            >Rating: {{row[4]}}</span
+                            ><span
+                                    class="restaurant-view__visible-card-price restaurant-view__option">
+                                Price range: {{row[5]}}
+                                
                                 {% if row[19] %}
                                 <span class="restaurant-view__visible-card-distance restaurant-view__option">
                                     Distance: {{row[19]}} km
                                 </span>
                                 {% endif %}
-
 
                                 {% if row[20] %}
                                 <span class="restaurant-view__visible-card-time restaurant-view__option">
@@ -645,7 +669,7 @@
 <script src="../static/js/restCard.js"></script>
 <script src="../static/js/filters.js"></script>
 <script src="../static/js/filterOpen.js"></script>
-
+<script src="../static/js/favourites.js"></script>
 
 </body>
 </html>
