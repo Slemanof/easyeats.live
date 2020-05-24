@@ -96,12 +96,12 @@ def logout():
 
 @jwt.expired_token_loader
 def my_expired_token_callback(callback):
-    return redirect(url_for('login'))
+    return render_template('redirect.html')
 
 
 @jwt.unauthorized_loader
 def unauthorized_loader_handler(callback):
-    return redirect(url_for('login'))
+    return render_template('redirect.html')
 
 
 @app.route('/home', methods=['GET', 'POST'])
@@ -110,6 +110,7 @@ def home():
     current_user = get_jwt_identity()
 
     cursor = mysql.connection.cursor()
+
     chosen_filters = request.args.to_dict(flat=False)
 
     if chosen_filters == {}:
@@ -296,7 +297,6 @@ def recommendations(user_id, cur):
             return recommended_data
 
 
-
 def check_liked_restaurants(user_id, cur):
     liked_restaurants = []
     check_user_query = """SELECT EXISTS(SELECT user_id FROM restaurant_user WHERE user_id = %s)""" % user_id
@@ -316,7 +316,6 @@ def check_liked_restaurants(user_id, cur):
 
 def like_and_unlike(user_id, cur):
     rest_id = request.json.get('restId', None)
-    print(rest_id)
 
     check_if_liked_query = "SELECT EXISTS(SELECT * FROM restaurant_user WHERE user_id = %s AND restaurant_id = %s ) " \
                            % (user_id, rest_id)
@@ -331,6 +330,7 @@ def like_and_unlike(user_id, cur):
 
     cur.execute(query)
     mysql.connection.commit()
+
 
 if __name__ == "__main__":
     app.run()
