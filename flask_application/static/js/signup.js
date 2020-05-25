@@ -1,32 +1,5 @@
 const signup = async (name, email, password, confirm) => {
   try {
-    const pass = document.querySelector('#password-signup').value;
-    console.log(pass)
-    if (pass.length < 8) {
-      showAlert('error', 'Password length must be not less than 8 symbols');
-      return 'short_pass';
-    } else if (pass.search(/[a-z]/) == -1) {
-      showAlert(
-        'error',
-        'You need to have at least one small letter in password'
-      );
-      return 'no_small_letter';
-    } else if (pass.search(/[A-Z]/) == -1) {
-      showAlert(
-        'error',
-        'You need to have at least one capital letter in password'
-      );
-      return 'no_capital_letter';
-    } else if (pass.search(/[0-9]/) == -1) {
-      showAlert('error', 'You need to have at least one digit in password');
-      return 'no_digit';
-    } else if (pass.search(/[!\@\#\$\%\^\&\_\+\.\,\;\:]/) == -1) {
-      showAlert(
-        'error',
-        'You need to have at least one special character in password: !@#$%^&_+.,;:'
-      );
-      return 'no_special_charachter';
-    }
     const res = await axios({
       method: 'POST',
       url: 'http://127.0.0.1:5000/signup',
