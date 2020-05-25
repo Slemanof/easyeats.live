@@ -1,0 +1,24 @@
+h1 {
+    color:white;
+    text-align: center;
+    font-family: arial;
+}
+
+.blank {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 40%;
+
+
+}
+
+.sign-in-text {
+    text-align: center;
+    color: white;
+    font-family: arial;
+}
+
+body {
+    background-color: #373737;
+}

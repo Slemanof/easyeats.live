@@ -1,0 +1,47 @@
+Requirements: Flask, Python venv, Flask Authlib
+
+1) Navigate to the google-login directory via cmd
+2) Start a python virtual environment with the command "python -m venv venv"
+3) Install the authlib module with the command "pip install authlib"
+4) Next, execute the following command: ".\env\Scripts\Activate
+5) Set the flask app to app.py by the command: "set FLASK_APP=app"
+6) Run the app on localhost with the command: "flask run"
+7) Open the following URL in your browser: http://127.0.0.1:5000/home
+8) Sign in with google using the button located at the bottom of the page
+9) Once finished, turn off the app by pressing "control + c" twice 
+
+Other pages accessible:
+
+1) - http://127.0.0.1:5000/answer
+	This page was intended to be redicrected to after signing in. As can be seen, 
+	when signed in with google button at http://127.0.0.1:5000/home, the page 
+	/answer retains this status
+
+2) - http://127.0.0.1:5000/
+	This page is the main page and includes a simple message, which changes to
+	 greet the user once login is performed via(next link)
+
+3) - http://127.0.0.1:5000/login
+	This page lets user login with google account. It has a faulty redirect,
+	however, the user can visit http://127.0.0.1:5000/ after logging in, and
+	view the changed message, which should greet the user by his e-mail
+
+Furhter information
+
+	Should this authentication method be expanded upon, Flask Authlib allows 
+	the use of the"@login_required" declarator to make certain pages only 
+	accessible to users who have been validated by google and are logged in.
+
+	Furthermore, in the python code, proper redirects can be set up, so users
+	are pointed to a specific page once google authenticates them via either
+ 	the button or /login link.
+
+	To request your own google API credentials for Google OAuth 2, refer to:
+	https://console.developers.google.com/apis/credentials and navigate to the
+	"+ create credentials" tab.
+
+	For an informative and well made youtube tutorial for implementing Google
+	OAuth, please refer to: https://www.youtube.com/watch?v=BfYsdNaHrps
+
+
+
