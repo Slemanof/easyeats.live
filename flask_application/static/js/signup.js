@@ -1,3 +1,14 @@
+const passwordFiled = document.querySelector('#password-signup');
+    const tooltip = document.querySelector('.tooltip-content');
+
+    passwordFiled.addEventListener('focusin', () => {
+    tooltip.classList.remove('tooltip-toggle');
+    });
+
+    passwordFiled.addEventListener('focusout', () => {
+    tooltip.classList.add('tooltip-toggle');
+    });
+
 const signup = async (name, email, password, confirm) => {
   try {
     const res = await axios({
