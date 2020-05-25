@@ -1,10 +1,9 @@
 from flask import Flask, render_template, request, url_for, jsonify, redirect
 from flask_mysqldb import MySQL
-from MySQLdb import escape_string
 import bcrypt
 import json
 from datetime import timedelta
-
+import re
 
 from flask_jwt_extended import (
     JWTManager, jwt_required, create_access_token,
@@ -30,49 +29,75 @@ app.config['MYSQL_DB'] = ''
 @app.route('/signup', methods=["GET", "POST"])
 def signup():
     if request.method == "POST":
-        name = escape_string(request.json.get('name', None)).decode()
-        email = escape_string(request.json.get('email', None)).decode()
+        name = request.json.get('name', None)
+        if not re.match('[A-Za-z]*$', name):
+            return jsonify({"msg": "Your name can only contain literals"}), 401
+        else:
+            user_name = name
+
+        email = request.json.get('email', None)
+        if not re.match('^[_A-Za-z0-9-\\+]+(\\.[_A-Za-z0-9-]+)*@[A-Za-z0-9-]+(\\.[A-Za-z0-9]+)*(\\.[A-Za-z]{2,})$',
+                        email):
+            return jsonify({"msg": "Please, enter a valid email"}), 401
+        else:
+            user_email = email
+
         password = request.json.get('password', None)
+
+        if not re.match(r"^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[!?:@#$*%^&_+.])[A-Za-z\d!?:@#$*%^&_+.]{8,20}$",password):
+            return jsonify({"msg": "Please, enter a valid password"}), 401
+        else:
+            user_password = password
+
         confirm = request.json.get('confirm', None)
 
         cur = mysql.connection.cursor()
 
-        if password == confirm:
-            query_email = "SELECT EXISTS(SELECT email FROM user WHERE email = '%(email)s') " % {"email": email}
+        if user_password == confirm:
+            query_email = "SELECT EXISTS(SELECT email FROM user WHERE email = '%(email)s') " % {"email": user_email}
             cur.execute(query_email)
             check_email = cur.fetchone()
 
-            secure_password = bcrypt.hashpw(password.encode('utf-8'), bcrypt.gensalt(12)).decode('utf-8')
-
             if check_email[0] == 0:
+                secure_password = bcrypt.hashpw(user_password.encode('utf-8'), bcrypt.gensalt(12)).decode('utf-8')
+
                 query_insert = ("""INSERT INTO user(name, email, password)
                                 VALUES ('%(name)s', '%(email)s', '%(password)s')""" %
-                                {"email": email, "name": name, "password": secure_password})
+                                {"email": user_email, "name": user_name, "password": secure_password})
+
                 cur.execute(query_insert)
                 mysql.connection.commit()
+
                 return jsonify({'signup': True})
+
             else:
                 return jsonify({"msg": "This e-mail is already in use"}), 401
         else:
             return jsonify({"msg": "Passwords do not match"}), 401
+
     return render_template('signup.html')
 
 
 @app.route('/login', methods=["GET", "POST"])
 def login():
     if request.method == "POST":
-        email = escape_string(request.json.get('email', None)).decode()
+        email = request.json.get('email', None)
+        if not re.match('^[A-Za-z0-9@.]*$', email):
+            return jsonify({"msg": "Please, enter a valid email"}), 401
+        else:
+            user_email = email
+
         password = request.json.get('password', None)
 
         cur = mysql.connection.cursor()
-        check_email = "SELECT EXISTS(SELECT email FROM user WHERE email = '%(email)s') " % {"email": email}
+        check_email = "SELECT EXISTS(SELECT email FROM user WHERE email = '%(email)s') " % {"email": user_email}
         cur.execute(check_email)
         check_email = cur.fetchone()
 
         if check_email[0] == 0:
             return jsonify({"msg": "Incorrect credentials"}), 401
         else:
-            query = "SELECT * FROM user WHERE email = '%(email)s' " % {"email": email}
+            query = "SELECT * FROM user WHERE email = '%(email)s' " % {"email": user_email}
             cur.execute(query)
             data = cur.fetchone()
 
@@ -138,7 +163,6 @@ def home():
         like_and_unlike(current_user, cursor)
 
     return render_template('index.html', data=new_data, like_list=like_list)
-
 
 
 def additional_options(query, filters):
