@@ -250,11 +250,6 @@ body {
       color: #000;
       outline: none; }
 
-.main__header__logo {
-  height: 4.25rem;
-  margin-left: 3rem;
-}
-
 .main__content {
   display: flex;
 }
