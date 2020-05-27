@@ -491,8 +491,16 @@ body {
     justify-content: space-between;
 }
 
-.main .restaurant-view__daily-menu-options {
-   padding: 1rem;
+.main .restaurant-view__bottom-block-options {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.main .restaurant-view__bottom-block-left{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
 .main .restaurant-view__show-more {
   position: relative;
