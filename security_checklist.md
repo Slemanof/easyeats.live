@@ -40,14 +40,13 @@
 
 ##### USER DATA & AUTHORIZATION
 - [ ] `Edit email` feature should be accompanied by a verification email to the owner of the account.
-- [ ] For user ids and other ids, use [RFC compliant ](http://www.ietf.org/rfc/rfc4122.txt) UUID instead of integers.
 - [ ] Use JWT tokens if possible. Use them if required for your single page app/APIs.
 
 ##### SESSION MANAGEMENT
 - [ ] Session identifier must be managed on a trusted system (e.g., server).
 - [ ] Log-out function will fully terminate the session.
 - [ ] Automatic log-out function will log out the user after specific ammount of time(e.g., 30min).
-- [ x] Do not allow several log-ins with the same username ID, terminate sessions that were made before.
+- [x] Do not allow several log-ins with the same username ID, terminate sessions that were made before.
 
 ##### SECURITY HEADERS & CONFIGURATIONS
 - [ ] Best practices include adding headers such as HSTS, X-Frame-Options, X-Content-Type-Options, etc.
@@ -56,9 +55,9 @@
 - [ ] Do not use critical data or tokens in GET request parameters. Exposure of server logs or a machine/stack processing them would expose user data in turn.
 
 ##### SYSTEM UPDATES
-- [x ] Ensure the framework and all other software is running up to date version of the system with all approved patches installed.
-- [x ] Restrict access to files, folders etc. to the least priviliges as possible.
-- [ x] Remove all unnecessary files(they might become vulnerability in system). 
+- [x] Ensure the framework and all other software is running up to date version of the system with all approved patches installed.
+- [x] Restrict access to files, folders etc. to the least priviliges as possible.
+- [x] Remove all unnecessary files(they might become vulnerability in system). 
 
 ##### SYSTEM BACKUP
-- [x ] The server will have a backup in case of a failure or in case of unknown threats, so it can be rolled back quickly.
+- [x] The server will have a backup in case of a failure or in case of unknown threats, so it can be rolled back quickly.
