@@ -1,46 +1,50 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8"/>
-    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <head>
+    <meta charset="UTF-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
 
     <link
-            href="https://fonts.googleapis.com/css?family=Lato:100,300,400,700,900"
-            rel="stylesheet"
+      href="https://fonts.googleapis.com/css?family=Lato:100,300,400,700,900"
+      rel="stylesheet"
     />
 
 
     <link href="{{ url_for('static', filename='css/style.css') }}" rel="stylesheet" type="text/css">
     <link href="{{ url_for('static', filename='img/favicon.png') }}" rel="shortcut icon" type="image/png">
+
+
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
 
+    <title>EasyEats</title>
+  </head>
+  <body>
+    <header class="header">
+      <div class="header__logo-box">
+        <img alt="Logo" class="header__logo" src="../static/img/logo.png" />
+      </div>
 
-    <title>Best Prague restaurants</title>
-</head>
-<body>
-<header class="header">
-    <div class="header__logo-box">
-        <img alt="Logo" class="header__logo" src="../static/img/logo.png"/>
-    </div>
-
-    <div class="header__text-box">
+      <div class="header__text-box">
         <h1 class="heading-primary">
-            <span class="heading-primary--main">Easy Eats</span>
-            <span class="heading-primary--sub">We'll make small decisions for you!</span>
+          <span class="heading-primary--main">Easy Eats</span>
+          <span class="heading-primary--sub"
+            >We'll make small decisions for you!</span
+          >
         </h1>
 
         <a class="btn btn--white btn--entry" href="#main__container"
-        >Discover best restaurants of Prague</a>
-    </div>
-</header>
-<main class="main">
-    <div class="main__container" id="main__container">
+          >Discover best restaurants of Prague</a
+        >
+      </div>
+    </header>
+    <main class="main">
+      <div class="main__container" id="main__container">
         <div class="main__header">
-            <img
-                    alt="restApp logo"
-                    class="main__header__logo"
-                    src="../static/img/logo.png"
-            />
+          <img
+            alt="restApp logo"
+            class="main__header__logo"
+            src="../static/img/logo.png"
+          />
 
             <div class="main__header__sort-controller">
                 <span>Sort by:&nbsp&nbsp</span>
@@ -68,24 +72,27 @@
                 </select
                 >
             </div>
+
         </div>
         <div class="main__content">
-            <section class="main__sidebar">
-                <div class="main__filter">
-                    <div class="main__filter__item">
-                        <div class="main__filter__item-head">
-                            <h3>Location</h3>
-                        </div>
-                        <div class="main__filter__item-body">
-                            <input
-                                    class="main__address-input"
-                                    name="address"
-                                    placeholder="Enter your location (street name)"
-                                    type="text"
-                                    value=""
-                            />
-                        </div>
-                    </div>
+          <section class="main__sidebar">
+            <div class="main__filter">
+              <div class="main__filter__item">
+                <div class="main__filter__item-head">
+                  <h3>Location</h3>
+                </div>
+                <div class="main__filter__item-body">
+                  <input
+                    class="main__address-input"
+                    name="address"
+                    id="searchAddress"
+                    placeholder="Enter your location (street name)"
+                    type="text"
+                    value=""
+                  />
+                </div>
+              </div>
+
 
                     <div class="main__filter__item main__filter__checkbox-item">
                         <div class="main__filter__item-head"><h3>Cuisine</h3></div>
@@ -158,15 +165,15 @@
                             <div class="main__filter__body-hidden">
 
                                 <div class="main__filter__body-elem">
-                                    <input
-                                            class="main__filter__body-input"
-                                            hidden=""
-                                            id="checkbox_7"
-                                            name="cuisines"
-                                            type="checkbox"
-                                            value="Belgian"
-                                    /><label class="main__filter__body-label" for="checkbox_7">Belgian</label>
-                                </div>
+                                <input
+                                        class="main__filter__body-input"
+                                        hidden=""
+                                        id="checkbox_7"
+                                        name="cuisines"
+                                        type="checkbox"
+                                        value="Belgian"
+                                /><label class="main__filter__body-label" for="checkbox_7">Belgian</label>
+                            </div>
 
                                 <div class="main__filter__body-elem">
                                     <input
@@ -212,27 +219,27 @@
                                 </div>
 
                                 <div class="main__filter__body-elem">
-                                    <input
-                                            class="main__filter__body-input"
-                                            hidden=""
-                                            id="checkbox_12"
-                                            name="cuisines"
-                                            type="checkbox"
-                                            value="Canadian"
-                                    /><label class="main__filter__body-label" for="checkbox_12">Canadian</label>
-                                </div>
+                                <input
+                                        class="main__filter__body-input"
+                                        hidden=""
+                                        id="checkbox_12"
+                                        name="cuisines"
+                                        type="checkbox"
+                                        value="Canadian"
+                                /><label class="main__filter__body-label" for="checkbox_12">Canadian</label>
+                            </div>
 
 
                                 <div class="main__filter__body-elem">
-                                    <input
-                                            class="main__filter__body-input"
-                                            hidden=""
-                                            id="checkbox_13"
-                                            name="cuisines"
-                                            type="checkbox"
-                                            value="Chinese"
-                                    /><label class="main__filter__body-label" for="checkbox_13">Chinese</label>
-                                </div>
+                                <input
+                                        class="main__filter__body-input"
+                                        hidden=""
+                                        id="checkbox_13"
+                                        name="cuisines"
+                                        type="checkbox"
+                                        value="Chinese"
+                                /><label class="main__filter__body-label" for="checkbox_13">Chinese</label>
+                            </div>
 
                                 <div class="main__filter__body-elem">
                                     <input
@@ -279,27 +286,27 @@
                                 </div>
 
                                 <div class="main__filter__body-elem">
-                                    <input
-                                            class="main__filter__body-input"
-                                            hidden=""
-                                            id="checkbox_18"
-                                            name="cuisines"
-                                            type="checkbox"
-                                            value="Desserts"
-                                    /><label class="main__filter__body-label" for="checkbox_18">Desserts</label>
-                                </div>
+                                <input
+                                        class="main__filter__body-input"
+                                        hidden=""
+                                        id="checkbox_18"
+                                        name="cuisines"
+                                        type="checkbox"
+                                        value="Desserts"
+                                /><label class="main__filter__body-label" for="checkbox_18">Desserts</label>
+                            </div>
 
 
                                 <div class="main__filter__body-elem">
-                                    <input
-                                            class="main__filter__body-input"
-                                            hidden=""
-                                            id="checkbox_19"
-                                            name="cuisines"
-                                            type="checkbox"
-                                            value="Drinks+Only"
-                                    /><label class="main__filter__body-label" for="checkbox_19">Drinks Only</label>
-                                </div>
+                                <input
+                                        class="main__filter__body-input"
+                                        hidden=""
+                                        id="checkbox_19"
+                                        name="cuisines"
+                                        type="checkbox"
+                                        value="Drinks+Only"
+                                /><label class="main__filter__body-label" for="checkbox_19">Drinks Only</label>
+                            </div>
 
 
                                 <div class="main__filter__body-elem">
@@ -313,7 +320,7 @@
                                     /><label class="main__filter__body-label" for="checkbox_20">Fast Food</label>
                                 </div>
 
-                                <div class="main__filter__body-elem">
+                                 <div class="main__filter__body-elem">
                                     <input
                                             class="main__filter__body-input"
                                             hidden=""
@@ -379,7 +386,7 @@
                                     /><label class="main__filter__body-label" for="checkbox_26">Healthy Food</label>
                                 </div>
 
-                                <div class="main__filter__body-elem">
+                                 <div class="main__filter__body-elem">
                                     <input
                                             class="main__filter__body-input"
                                             hidden=""
@@ -434,7 +441,7 @@
                                     /><label class="main__filter__body-label" for="checkbox_31">Italian</label>
                                 </div>
 
-                                <div class="main__filter__body-elem">
+                                 <div class="main__filter__body-elem">
                                     <input
                                             class="main__filter__body-input"
                                             hidden=""
@@ -673,158 +680,172 @@
                         </div>
                     </div>
 
-                    <div class="main__filter__item main__filter__checkbox-item">
-                        <div class="main__filter__item-head">
-                            <h3>Dietary Preferences</h3>
-                        </div>
-                        <div class="main__filter__body">
-                            <div class="main__filter__body-elem">
-                                <input
-                                        class="main__filter__body-input"
-                                        hidden
-                                        id="checkbox_53"
-                                        name="vegetarian"
-                                        type="checkbox"
-                                        value="Vegetarian"
-                                /><label class="main__filter__body-label" for="checkbox_53"
-                            >Vegetarian</label
-                            >
-                            </div>
-                            <div class="main__filter__body-elem">
-                                <input
-                                        class="main__filter__body-input"
-                                        hidden
-                                        id="checkbox_54"
-                                        name="vegan"
-                                        type="checkbox"
-                                        value="Vegan"
-                                /><label class="main__filter__body-label" for="checkbox_54"
-                            >Vegan</label
-                            >
-                            </div>
-                            <div class="main__filter__body-elem">
-                                <input
-                                        class="main__filter__body-input"
-                                        hidden
-                                        id="checkbox_55"
-                                        name="gluten_free"
-                                        type="checkbox"
-                                        value="Gluten+Free"
-                                /><label class="main__filter__body-label" for="checkbox_55"
-                            >Gluten Free</label
-                            >
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="main__filter__item main__filter__checkbox-item">
-                        <div class="main__filter__item-head">
-                            <h3>Others</h3>
-                        </div>
-                        <div class="main__filter__body">
-                            <div class="main__filter__body-elem">
-                                <input
-                                        class="main__filter__body-input"
-                                        hidden
-                                        id="checkbox_56"
-                                        name="credit_card"
-                                        type="checkbox"
-                                        value="Payment+by+card"
-                                /><label class="main__filter__body-label" for="checkbox_56"
-                            >Payment by card</label
-                            >
-                            </div>
-                            <div class="main__filter__body-elem">
-                                <input
-                                        class="main__filter__body-input"
-                                        hidden
-                                        id="checkbox_57"
-                                        name="takeaway"
-                                        type="checkbox"
-                                        value="Takeaway+option"
-                                /><label class="main__filter__body-label" for="checkbox_57"
-                            >Takeaway option</label
-                            >
-                            </div>
-                        </div>
-                    </div>
-
-
-                    <a
-                            class="main__filter__body-search-btn main__filter__body-search-btn--grey"
-                            href="/home"
-                    >Search
-
-                    </a>
+              <div class="main__filter__item main__filter__checkbox-item">
+                <div class="main__filter__item-head">
+                  <h3>Dietary Preferences</h3>
                 </div>
-            </section>
-            <section class="restaurant-view">
-                {% if data|length %}
-                {% for row in data %}
+                <div class="main__filter__body">
+                  <div class="main__filter__body-elem">
+                    <input
+                      class="main__filter__body-input"
+                      hidden
+                      id="checkbox_53"
+                      name="vegetarian"
+                      type="checkbox"
+                      value="Vegetarian"
+                    /><label class="main__filter__body-label" for="checkbox_53"
+                      >Vegetarian</label
+                    >
+                  </div>
+                  <div class="main__filter__body-elem">
+                    <input
+                      class="main__filter__body-input"
+                      hidden
+                      id="checkbox_54"
+                      name="vegan"
+                      type="checkbox"
+                      value="Vegan"
+                    /><label class="main__filter__body-label" for="checkbox_54"
+                      >Vegan</label
+                    >
+                  </div>
+                  <div class="main__filter__body-elem">
+                    <input
+                      class="main__filter__body-input"
+                      hidden
+                      id="checkbox_55"
+                      name="gluten_free"
+                      type="checkbox"
+                      value="Gluten+Free"
+                    /><label class="main__filter__body-label" for="checkbox_55"
+                      >Gluten Free</label
+                    >
+                  </div>
+                </div>
+              </div>
+              <div class="main__filter__item main__filter__checkbox-item">
+                <div class="main__filter__item-head">
+                  <h3>Others</h3>
+                </div>
+                <div class="main__filter__body">
+                  <div class="main__filter__body-elem">
+                    <input
+                      class="main__filter__body-input"
+                      hidden
+                      id="checkbox_56"
+                      name="credit_card"
+                      type="checkbox"
+                      value="Payment+by+card"
+                    /><label class="main__filter__body-label" for="checkbox_56"
+                      >Payment by card</label
+                    >
+                  </div>
+                  <div class="main__filter__body-elem">
+                    <input
+                      class="main__filter__body-input"
+                      hidden
+                      id="checkbox_57"
+                      name="takeaway"
+                      type="checkbox"
+                      value="Takeaway+option"
+                    /><label class="main__filter__body-label" for="checkbox_57"
+                      >Takeaway option</label
+                    >
+                  </div>
+                </div>
+              </div>
+              <div class="main__filter__btn-block">
+                <button
+                  class="main__filter__body-search-btn main__filter__body__btn-neuro"
+                >
+                  <span>Search</span></button
+                ><button
+                  class="main__filter__body-refresh-btn main__filter__body__btn-neuro"
+                >
+                  <span>Refresh</span>
+                </button>
+              </div>
+            </div>
+          </section>
+          <section class="restaurant-view">
+            {% if data|length %} {% for row in data %}
 
-                <div class="restaurant-view__restaurant-card" data-price="{{row[5]}}" data-rating="{{row[4]}}">
-                    <div class="restaurant-view__top-block">
-                        <div class="restaurant-view__card-photo" style="background-image:url('{{row[3]}}')"></div>
-                        <div class="restaurant-view__card-info">
-                            <div class="restaurant-view__card-info-top">
-                                <h3 class="restaurant-view__card-name">{{row[1]}}</h3>
-                                {% if row[0] in like_list %}
-                                <button class="restaurant-view__like-btn" data-rest-id="{{row[0]}}">
-                                    <svg class="restaurant-view__full-star-icon restaurant-view__like-svg">
-                                        <use
-                                                xlink:href="../static/img/sprite.svg#icon-star-full"
-                                        ></use>
-                                    </svg>
-                                </button>
-                                {% else %}
-                                <button class="restaurant-view__like-btn" data-rest-id="{{row[0]}}">
-                                    <svg class="restaurant-view__empty-star-icon restaurant-view__like-svg">
-                                        <use
-                                                xlink:href="../static/img/sprite.svg#icon-star-empty"
-                                        ></use>
-                                    </svg>
-                                </button>
-                                {% endif %}
-                            </div>
-                            <div class="restaurant-view__card-info-middle">
+            <div
+              class="restaurant-view__restaurant-card"
+              data-price="{{row[5]}}"
+              data-rating="{{row[4]}}"
+            >
+              <div class="restaurant-view__top-block">
+                <div
+                  class="restaurant-view__card-photo"
+                  style="background-image:url('{{row[3]}}')"
+                ></div>
+                <div class="restaurant-view__card-info">
+                  <div class="restaurant-view__card-info-top">
+                    <h3 class="restaurant-view__card-name">{{row[1]}}</h3>
+                    {% if row[0] in like_list %}
+                    <button
+                      class="restaurant-view__like-btn"
+                      data-rest-id="{{row[0]}}"
+                    >
+                      <svg
+                        class="restaurant-view__full-star-icon restaurant-view__like-svg"
+                      >
+                        <use
+                          xlink:href="../static/img/sprite.svg#icon-star-full"
+                        ></use>
+                      </svg>
+                    </button>
+                    {% else %}
+                    <button
+                      class="restaurant-view__like-btn"
+                      data-rest-id="{{row[0]}}"
+                    >
+                      <svg
+                        class="restaurant-view__empty-star-icon restaurant-view__like-svg"
+                      >
+                        <use
+                          xlink:href="../static/img/sprite.svg#icon-star-empty"
+                        ></use>
+                      </svg>
+                    </button>
+                    {% endif %}
+                  </div>
+                  <div class="restaurant-view__card-info-middle">
+                    <span
+                      class="restaurant-view__visible-card-address restaurant-view__option"
+                      >Address: {{row[2]}}</span
+                    >
 
-                      <span
-                              class="restaurant-view__visible-card-address restaurant-view__option">
-                          Address: {{row[2]}}
-                      </span>
+                    <span
+                      class="restaurant-view__visible-card-cuisisne restaurant-view__option"
+                      >Cuisine: {% if row[18] %} {{row[18]}} {% elif row[16] %}
+                      {{row[16]}} {% endif %} </span
+                    ><span
+                      class="restaurant-view__visible-card-rating restaurant-view__option"
+                      >Rating: {{row[4]}}</span
+                    ><span
+                      class="restaurant-view__visible-card-price restaurant-view__option"
+                      >Price range: {{row[5]}}
+                    </span>
 
-                                <span
-                                        class="restaurant-view__visible-card-cuisisne restaurant-view__option"
-                                >Cuisine:
-                                    {% if row[18] %}
-                                        {{row[18]}}
-                                    {% elif row[16] %}
-                                        {{row[16]}}
-                                    {% endif %}</span
-                                ><span
-                                    class="restaurant-view__visible-card-rating restaurant-view__option"
-                            >Rating: {{row[4]}}</span
-                            ><span
-                                    class="restaurant-view__visible-card-price restaurant-view__option">
-                                Price range: {{row[5]}}
-                            </span>
+                    {% if row[19] %}
 
-                                {% if row[19] %}
-                                <span class="restaurant-view__visible-card-distance restaurant-view__option">
-                                    Distance: {{row[19]}} km
-                                </span>
-                                {% endif %}
-
-                                {% if row[20] %}
-                                <span class="restaurant-view__visible-card-time restaurant-view__option">
-                                    Time: {{row[20]}} min
-                                </span>
-                                {% endif %}
-
-                            </div>
-                        </div>
-                    </div>
-                    <div class="restaurant-view__bottom-block">
+                    <span
+                      class="restaurant-view__visible-card-distance restaurant-view__option"
+                    >
+                      Distance: {{row[19]}} km</span
+                    >
+                    {% endif %} {% if row[20] %}
+                    <span
+                      class="restaurant-view__visible-card-time restaurant-view__option"
+                      >Time: {{row[20]}} min</span
+                    >
+                    {% endif %}
+                  </div>
+                </div>
+              </div>
+                <div class="restaurant-view__bottom-block">
                         <div class="restaurant-view__bottom-block-options">
 
                             {% if row[7] == 1 %}
@@ -899,32 +920,34 @@
                         </div>
 
                     </div>
-                    <button class="restaurant-view__show-more">Show more</button>
-                </div>
+              <div class="restaurant-view__show-more">
+                <span>Show more</span>
+              </div>
+            </div>
 
-                {% endfor %}
-
-                {% else %}
-                <span>No restaurants found</span>
-                {% endif %}
-
-            </section>
+            {% endfor %} {% else %}
+            <span>No restaurants found</span>
+            {% endif %}
+          </section>
         </div>
-    </div>
-</main>
-<footer class="footer">
-    <div class="footer__logo-box">
-        <img alt="Full logo" class="footer__logo" src="../static/img/logo.png"/>
-    </div>
-    <div class="footer__copyright">
-        <p class="footer__copyright__text">All rights reserved</p>
-    </div>
-</footer>
-<script src="../static/js/sort.js"></script>
-<script src="../static/js/restCard.js"></script>
-<script src="../static/js/filters.js"></script>
-<script src="../static/js/filterOpen.js"></script>
-<script src="../static/js/favourites.js"></script>
-
-</body>
+      </div>
+    </main>
+    <footer class="footer">
+      <div class="footer__logo-box">
+        <img
+          alt="Full logo"
+          class="footer__logo"
+          src="../static/img/logo.png"
+        />
+      </div>
+      <div class="footer__copyright">
+        <p class="footer__copyright__text">All right reserved</p>
+      </div>
+    </footer>
+    <script src="../static/js/sort.js"></script>
+    <script src="../static/js/restCard.js"></script>
+    <script src="../static/js/filter.js"></script>
+    <script src="../static/js/filterOpen.js"></script>
+    <script src="../static/js/favourites.js"></script>
+  </body>
 </html>
