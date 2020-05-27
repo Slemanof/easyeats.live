@@ -21,5 +21,9 @@ function showMore() {
       document.querySelector('.main__filter__body-hidden '),
       'main__filter__body-hidden--visable'
     );
+    showMoreFilter.scrollIntoView({
+      behavior: 'smooth',
+      block: 'center',
+    });
   }
 }
