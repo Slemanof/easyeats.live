@@ -40,8 +40,7 @@ TBA
 
 ## Limitations
 
-* Zomato API daily requests number, which is 1000 request for the free version which
-  is being used at the moment.
+* The data for this application fully dependent on Zomato API.
 
 
 ## Dependencies
@@ -49,7 +48,9 @@ TBA
 This application depends on a multiple of libraries that provided code snippets
 or functions pre-defined by the authors listed below:
 
-TBA
+* Flask
+* requests 
+* mysql_connector
 
 ## References
 
