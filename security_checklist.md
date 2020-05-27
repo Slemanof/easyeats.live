@@ -3,14 +3,14 @@
 
 ##### GITHUB
 - [ ] Set up a page for security researchers to report vulnerabilities and upcoming threats(ASAP steps can be taken to protect the application and users).
-- [ ] Never commit secrets or passwords in your code.
-- [ ] Keep track of the dependencies and libraries used.
+- [x] Never commit secrets or passwords in your code.
+- [x ] Keep track of the dependencies and libraries used.
 - [ ] Prepare a Threat Model that will consider the possible attacks on the web application.
 
 ##### OPERATIONS
-- [ ] Since we are a small team, consider using a Platform as a Service to run the app.
-- [ ] Use periodically backups to save a copy of the OS or Virtual Enviroment where the web application will run.
-- [ ] Do not leave the DEBUG mode on. In some frameworks, DEBUG mode can give access or expose critical data in error messages.
+- [x ] Since we are a small team, consider using a Platform as a Service to run the app.
+- [x ] Use periodically backups to save a copy of the OS or Virtual Enviroment where the web application will run.
+- [x ] Do not leave the DEBUG mode on. In some frameworks, DEBUG mode can give access or expose critical data in error messages.
 
 ##### SANITIZATION OF INPUT
 - [ ] All data sources classify into trusted/ untrusted and validate untrusted data (e.g., databases).
@@ -31,8 +31,8 @@
 - [ ] Stregthening password policies (e.g., inclusion of one big and small letter, inclusion of one special character, etc.).
 - [ ] Password entry when logging in will be obscured.
 - [ ] False authentication of the user will not display which part of login data was incorrect - username/password, only display "Invalid Log-In".  
-- [ ] Use HTTPS.
-- [ ] Use standard libraries to manage Encryption. For example: store password hashes using Bcrypt.
+- [x ] Use HTTPS.
+- [x ] Use standard libraries to manage Encryption. For example: store password hashes using Bcrypt.
 - [ ] Destroy the session identifier after logout.
 - [ ] No open redirects after successful login or in any other intermediate redirects.
 - [ ] When parsing Signup/Login input, sanitize for javascript://, data://, CRLF characters.
@@ -47,7 +47,7 @@
 - [ ] Session identifier must be managed on a trusted system (e.g., server).
 - [ ] Log-out function will fully terminate the session.
 - [ ] Automatic log-out function will log out the user after specific ammount of time(e.g., 30min).
-- [ ] Do not allow several log-ins with the same username ID, terminate sessions that were made before.
+- [ x] Do not allow several log-ins with the same username ID, terminate sessions that were made before.
 
 ##### SECURITY HEADERS & CONFIGURATIONS
 - [ ] Best practices include adding headers such as HSTS, X-Frame-Options, X-Content-Type-Options, etc.
@@ -56,9 +56,9 @@
 - [ ] Do not use critical data or tokens in GET request parameters. Exposure of server logs or a machine/stack processing them would expose user data in turn.
 
 ##### SYSTEM UPDATES
-- [ ] Ensure the framework and all other software is running up to date version of the system with all approved patches installed.
-- [ ] Restrict access to files, folders etc. to the least priviliges as possible.
-- [ ] Remove all unnecessary files(they might become vulnerability in system). 
+- [x ] Ensure the framework and all other software is running up to date version of the system with all approved patches installed.
+- [x ] Restrict access to files, folders etc. to the least priviliges as possible.
+- [ x] Remove all unnecessary files(they might become vulnerability in system). 
 
 ##### SYSTEM BACKUP
-- [ ] The server will have a backup in case of a failure or in case of unknown threats, so it can be rolled back quickly.
+- [x ] The server will have a backup in case of a failure or in case of unknown threats, so it can be rolled back quickly.
