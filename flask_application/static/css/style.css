@@ -455,10 +455,6 @@ body {
   transition: max-height 1.5s, opacity 1s;
   pointer-events: none;
 }
-.main .restaurant-view__bottom-block-options {
-      display: flex;
-      flex-direction: column; }
-
 
 .main .restaurant-view__bottom-block-visable {
   max-height: 5000px;
