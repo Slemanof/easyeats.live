@@ -35,7 +35,7 @@ TBA
 
 ## Examples
 
-![Login](https://github.com/Slemanof/easyeats.live/tree/128_complete_readme/usage-example/Login.gif)
+![Login](usage-example/Login.gif)
 
 
 ## Limitations
