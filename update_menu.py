@@ -33,7 +33,6 @@ def get_menu(restaurant_id):
 
 
 def update_menu_database(res_id, menu, cnx, crs):
-    cnx = cnx
     cursor = crs
     update_sql = ("UPDATE restaurant SET  menu =\'" +
                   menu + "\'  WHERE id = "+str(res_id))
