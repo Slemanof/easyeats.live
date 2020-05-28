@@ -35,9 +35,11 @@ TBA
 
 ## Examples
 
+### Sign in:
+![Signup](usage-example/Signup.gif)
+
 ### Login:
 ![Login](usage-example/Login.gif)
-
 
 ## Limitations
 
