@@ -48,9 +48,20 @@ TBA
 This application depends on a multiple of libraries that provided code snippets
 or functions pre-defined by the authors listed below:
 
-* Flask
-* requests 
-* mysql_connector
+* [Flask](https://github.com/pallets/flask)
+* [requests](https://github.com/psf/requests)
+* [mysql_connector](https://github.com/mysql/mysql-connector-python)
+* [mysql_connector_repackaged](https://pypi.org/project/mysql-connector-repackaged/)
+* [Unidecode](https://pypi.org/project/Unidecode/)
+* [cryptografy](https://github.com/pyca/cryptography)
+* [python_bcrypt](https://github.com/pyca/bcrypt/)
+* [click](https://github.com/pallets/click)
+* [Flask-MySQLdb](https://github.com/admiralobvious/flask-mysqldb)
+* [itsdangerous](https://github.com/pallets/itsdangerous)
+* [Jinja2](https://github.com/pallets/jinja)
+* [MarkupSafe](https://github.com/pallets/markupsafe)
+* [mysqlclient](https://github.com/PyMySQL/mysqlclient-python)
+* [Werkzeug](https://github.com/pallets/werkzeug)
 
 ## References
 
