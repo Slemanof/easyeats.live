@@ -2,10 +2,11 @@ requests==2.22.0
 Unidecode==1.1.1
 cryptography==2.8
 mysql_connector_repackaged==0.3.1
-python_bcrypt==0.3.2
+bcrypt==3.1.7
 click==7.1.2
 Flask==1.1.2
 Flask-MySQLdb==0.2.0
+Flask_JWT_Extended==3.24.1
 itsdangerous==1.1.0
 Jinja2==2.11.2
 MarkupSafe==1.1.1
