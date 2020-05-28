@@ -43,6 +43,7 @@ This application will be a web-based application that could be visited here:
 ## Limitations
 
 * The data for this application fully dependent on Zomato API.
+* Website is not responcive, thus experience on mobile devices is not ideal.
 
 
 ## Dependencies
