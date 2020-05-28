@@ -22,10 +22,10 @@ app.config['JWT_ACCESS_COOKIE_PATH'] = '/home'
 app.config['JWT_ACCESS_TOKEN_EXPIRES'] = timedelta(hours=2)
 
 
-app.config['MYSQL_HOST'] = 'localhost'
-app.config['MYSQL_USER'] = 'irina'
-app.config['MYSQL_PASSWORD'] = 'password'
-app.config['MYSQL_DB'] = 'try_new_menu'
+app.config['MYSQL_HOST'] = ''
+app.config['MYSQL_USER'] = ''
+app.config['MYSQL_PASSWORD'] = ''
+app.config['MYSQL_DB'] = ''
 
 mysql = MySQL(app)
 
