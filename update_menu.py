@@ -32,8 +32,7 @@ def get_menu(restaurant_id):
     return data
 
 
-def update_menu_database(res_id, menu, cnx, crs):
-    cursor = crs
+def update_menu_database(res_id, menu, cnx, cursor):
     update_sql = ("UPDATE restaurant SET  menu =\'" +
                   menu + "\'  WHERE id = "+str(res_id))
     cursor.execute(update_sql)
