@@ -22,7 +22,9 @@ and gives recommendations based on users choices.
 
 ## Requirement
 
-TBA
+* MySQL server
+* Python 3.x
+* Any browser
 
 ## Installation
 
