@@ -39,8 +39,6 @@ def update_menu_database(res_id, menu, cnx, cursor):
     cnx.commit()
 
 
-
-
 def update_main():
     cnx = mysql.connector.connect(user='script', password='LetMeIn:)123',
                                   host='127.0.0.1',
@@ -50,12 +48,14 @@ def update_main():
     get_ids = ("SELECT id FROM restaurant")
     cursor.execute(get_ids)
     for row in cursor:
-        update_menu_database((row[0]), (get_menu(str(row[0]))), cnx, cursor2)
-
+        try:
+            update_menu_database(
+                (row[0]), (get_menu(str(row[0]))), cnx, cursor2)
+        except:
+            continue
     cnx.close()
     cursor.close()
     cursor2.close()
-
 
 
 update_main()
