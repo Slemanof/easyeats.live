@@ -29,10 +29,6 @@ TBA
 This application will be a web-based application that could be visited here:
  ["www.easyeats.live"]
 
-## Usage
-
-TBA
-
 ## Examples
 
 ### Sign in:
@@ -40,6 +36,9 @@ TBA
 
 ### Login:
 ![Login](usage-example/Login.gif)
+
+### General Usage
+![Usage](usage-example/Usage.gif)
 
 ## Limitations
 
