@@ -62,6 +62,7 @@ or functions pre-defined by the authors listed below:
 * [python_bcrypt](https://github.com/pyca/bcrypt/), Python Cryptographic Authority, 3.1.7, GitHub.
 * [click](https://github.com/pallets/click), The Pallets Projects, 7.1.2, GitHub.
 * [Flask-MySQLdb](https://github.com/admiralobvious/flask-mysqldb), Ferland, A. (2015), 0.2.0, GitHub.
+* [Flask_JWT_Extended](https://pypi.org/project/Flask-JWT-Extended/)
 * [itsdangerous](https://github.com/pallets/itsdangerous), The Pallets Projects, 2.0.0a1, GitHub.
 * [Jinja2](https://github.com/pallets/jinja), The Pallets Projects, 2.11.2, GitHub.
 * [MarkupSafe](https://github.com/pallets/markupsafe), The Pallets Projects, 2.0.0a1, GitHub.
