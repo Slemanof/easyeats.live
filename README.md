@@ -59,7 +59,6 @@ or functions pre-defined by the authors listed below:
 * [mysql_connector_repackaged](https://pypi.org/project/mysql-connector-repackaged/), The Python Package Index (PyPI), 0.3.1, Website. 
 * [Unidecode](https://pypi.org/project/Unidecode/), The Python Package Index (PyPI), 1.1.1, Website.
 * [cryptografy](https://github.com/pyca/cryptography), Python Cryptographic Authority, 2.9.2, GitHub.
-* [python_bcrypt](https://github.com/pyca/bcrypt/), Python Cryptographic Authority, 3.1.7, GitHub.
 * [click](https://github.com/pallets/click), The Pallets Projects, 7.1.2, GitHub.
 * [Flask-MySQLdb](https://github.com/admiralobvious/flask-mysqldb), Ferland, A. (2015), 0.2.0, GitHub.
 * [Flask_JWT_Extended](https://pypi.org/project/Flask-JWT-Extended/)
