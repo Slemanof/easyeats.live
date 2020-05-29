@@ -3,12 +3,14 @@ from datetime import timedelta
 
 from flask import Flask, render_template, request, jsonify
 from flask_mysqldb import MySQL
-import bcrypt
+
 import re
 from flask_jwt_extended import (
     JWTManager, jwt_required, create_access_token,
     get_jwt_identity, set_access_cookies, unset_jwt_cookies,
 )
+
+from werkzeug.security import generate_password_hash, check_password_hash
 
 app = Flask(__name__)
 jwt = JWTManager(app)
@@ -60,8 +62,7 @@ def signup():
             check_email = cur.fetchone()
 
             if check_email[0] == 0:
-                secure_password = bcrypt.hashpw(user_password.encode('utf-8'), bcrypt.gensalt(12)).decode('utf-8')
-
+                secure_password = generate_password_hash(user_password, "sha256", 12)
                 query_insert = ("""INSERT INTO user(name, email, password)
                                 VALUES ('%(name)s', '%(email)s', '%(password)s')""" %
                                 {"email": user_email, "name": user_name, "password": secure_password})
@@ -103,7 +104,7 @@ def login():
             cur.execute(query)
             data = cur.fetchone()
 
-            if bcrypt.checkpw(password.encode('utf-8'), data[3].encode('utf-8')):
+            if check_password_hash(data[3], password):
                 access_token = create_access_token(identity=data[0])
                 resp = jsonify({'login': True})
                 set_access_cookies(resp, access_token)
