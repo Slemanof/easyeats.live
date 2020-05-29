@@ -1,6 +1,123 @@
-from app import (app, request, mysql, escape_string, bcrypt, jsonify, json,
-                 render_template, redirect, url_for, jwt, jwt_required, get_jwt_identity)
+import json
+from datetime import timedelta
 
+from flask import Flask, render_template, request, jsonify
+from flask_mysqldb import MySQL
+import bcrypt
+import re
+from flask_jwt_extended import (
+    JWTManager, jwt_required, create_access_token,
+    get_jwt_identity, set_access_cookies, unset_jwt_cookies,
+)
+
+app = Flask(__name__)
+jwt = JWTManager(app)
+mysql = MySQL(app)
+
+app.config['JWT_TOKEN_LOCATION'] = ['cookies']
+app.config['JWT_SECRET_KEY'] = 'super-secret'
+app.config['JWT_COOKIE_SECURE'] = False
+app.config['JWT_COOKIE_CSRF_PROTECT'] = False
+app.config['JWT_ACCESS_COOKIE_PATH'] = '/home'
+app.config['JWT_ACCESS_TOKEN_EXPIRES'] = timedelta(hours=2)
+
+app.config['MYSQL_HOST'] = ''
+app.config['MYSQL_USER'] = ''
+app.config['MYSQL_PASSWORD'] = ''
+app.config['MYSQL_DB'] = ''
+
+
+@app.route('/signup', methods=["GET", "POST"])
+def signup():
+    if request.method == "POST":
+        name = request.json.get('name', None)
+        if not re.match('[A-Za-z]*$', name):
+            return jsonify({"msg": "Your name can only contain literals"}), 401
+        else:
+            user_name = name
+
+        email = request.json.get('email', None)
+        if not re.match('^[_A-Za-z0-9-\\+]+(\\.[_A-Za-z0-9-]+)*@[A-Za-z0-9-]+(\\.[A-Za-z0-9]+)*(\\.[A-Za-z]{2,})$',
+                        email):
+            return jsonify({"msg": "Please, enter a valid email"}), 401
+        else:
+            user_email = email
+
+        password = request.json.get('password', None)
+
+        if not re.match(r"^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[!?:@#$*%^&_+.])[A-Za-z\d!?:@#$*%^&_+.]{8,20}$",password):
+            return jsonify({"msg": "Please, enter a valid password"}), 401
+        else:
+            user_password = password
+
+        confirm = request.json.get('confirm', None)
+
+        cur = mysql.connection.cursor()
+
+        if user_password == confirm:
+            query_email = "SELECT EXISTS(SELECT email FROM user WHERE email = '%(email)s') " % {"email": user_email}
+            cur.execute(query_email)
+            check_email = cur.fetchone()
+
+            if check_email[0] == 0:
+                secure_password = bcrypt.hashpw(user_password.encode('utf-8'), bcrypt.gensalt(12)).decode('utf-8')
+
+                query_insert = ("""INSERT INTO user(name, email, password)
+                                VALUES ('%(name)s', '%(email)s', '%(password)s')""" %
+                                {"email": user_email, "name": user_name, "password": secure_password})
+
+                cur.execute(query_insert)
+                mysql.connection.commit()
+
+                return jsonify({'signup': True})
+
+            else:
+                return jsonify({"msg": "This e-mail is already in use"}), 401
+        else:
+            return jsonify({"msg": "Passwords do not match"}), 401
+
+    return render_template('signup.html')
+
+
+@app.route('/login', methods=["GET", "POST"])
+def login():
+    if request.method == "POST":
+        email = request.json.get('email', None)
+        if not re.match('^[A-Za-z0-9@.]*$', email):
+            return jsonify({"msg": "Please, enter a valid email"}), 401
+        else:
+            user_email = email
+
+        password = request.json.get('password', None)
+
+        cur = mysql.connection.cursor()
+        check_email = "SELECT EXISTS(SELECT email FROM user WHERE email = '%(email)s') " % {"email": user_email}
+        cur.execute(check_email)
+        check_email = cur.fetchone()
+
+        if check_email[0] == 0:
+            return jsonify({"msg": "Incorrect credentials"}), 401
+        else:
+            query = "SELECT * FROM user WHERE email = '%(email)s' " % {"email": user_email}
+            cur.execute(query)
+            data = cur.fetchone()
+
+            if bcrypt.checkpw(password.encode('utf-8'), data[3].encode('utf-8')):
+                access_token = create_access_token(identity=data[0])
+                resp = jsonify({'login': True})
+                set_access_cookies(resp, access_token)
+                return resp
+            else:
+                return jsonify({"msg": "Incorrect credentials"}), 401
+
+    return render_template('login.html')
+
+
+@app.route('/logout')
+def logout():
+    resp = jsonify({'logout': True})
+    unset_jwt_cookies(resp)
+    return resp, 200
 
 
 @jwt.expired_token_loader
@@ -238,4 +355,8 @@ def like_and_unlike(user_id, cur):
 
     cur.execute(query)
     mysql.connection.commit()
+
+
+if __name__ == "__main__":
+    app.run()
 
