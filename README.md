@@ -10,7 +10,7 @@
 [![GitHub issues](https://img.shields.io/github/issues/Slemanof/easyeats.live)](https://github.com/Slemanof/easyeats.live/issues)
 ![Contributors](https://img.shields.io/github/contributors/Slemanof/easyeats.live)
 
-[![Logo](https://github.com/Slemanof/easyeats.live/blob/develop/flask_application/app/static/img/logo.png)](https://easyeats.live/)
+[![Logo](https://github.com/Slemanof/easyeats.live/blob/develop/flask_application/static/img/logo.png)](https://easyeats.live/)
 
 
 
@@ -61,7 +61,6 @@ or functions pre-defined by the authors listed below:
 * [cryptografy](https://github.com/pyca/cryptography), Python Cryptographic Authority, 2.9.2, GitHub.
 * [click](https://github.com/pallets/click), The Pallets Projects, 7.1.2, GitHub.
 * [Flask-MySQLdb](https://github.com/admiralobvious/flask-mysqldb), Ferland, A. (2015), 0.2.0, GitHub.
-* [Flask_JWT_Extended](https://pypi.org/project/Flask-JWT-Extended/)
 * [itsdangerous](https://github.com/pallets/itsdangerous), The Pallets Projects, 2.0.0a1, GitHub.
 * [Jinja2](https://github.com/pallets/jinja), The Pallets Projects, 2.11.2, GitHub.
 * [MarkupSafe](https://github.com/pallets/markupsafe), The Pallets Projects, 2.0.0a1, GitHub.
