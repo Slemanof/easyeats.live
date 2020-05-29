@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link  href="https://fonts.googleapis.com/css?family=Lato:100,300,400,700,900"
+      rel="stylesheet"/>
+
+    <link href="{{ url_for('static', filename='css/style.css') }}" rel="stylesheet" type="text/css">
+    <link href="{{ url_for('static', filename='img/favicon.png') }}" rel="shortcut icon" type="image/png">
+    <link href="{{ url_for('static', filename='css/icon-font.css') }}" rel="stylesheet">
+
+
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+
+    <title>EasyEats</title>
+  </head>
+  <body>
+    <main class="main">
+      <div class="link-block">
+        <a href="/login" class="btn-form-link btn--white"
+          >Login
+        </a>
+      </div>
+      <div class="login-signup-form">
+        <h2 class="heading-secondary ma-bt-lg">Sign up</h2>
+        <form class="form">
+          <div class="form__group">
+            <label class="form__label" for="name">Name</label
+            ><input
+              class="form__input"
+              id="name"
+              name="name"
+              type="text"
+              placeholder="John"
+              required="required"
+              maxlength="30"
+            />
+          </div>
+          <div class="form__group">
+            <label class="form__label" for="email">Email address</label
+            ><input
+              class="form__input"
+              id="email"
+              name="email"
+              type="email"
+              placeholder="you@example.com"
+              required="required"
+            />
+          </div>
+          <div class="form__group ma-bt-md form__group-tooltip">
+            <label class="form__label" for="password-signup">Password</label
+            ><input
+                  class="form__input"
+                  id="password-signup"
+                  maxlength="20"
+                  minlength="8"
+                  name="password-signup"
+                  placeholder="••••••••"
+                  required="required"
+                  type="password"
+            />
+            <div class="tooltip-content tooltip-toggle">
+              <p>Use digits, uppercase and lowercase letters, special characters: !?:@#$*%^&_+.
+                </p>
+              <div class="tooltip-arrow">
+
+              </div>
+            </div>
+          </div>
+          <div class="form__group ma-bt-md">
+            <label class="form__label" for="password-confirm"
+              >Confirm password</label
+            ><input
+              class="form__input"
+              id="password-confirm"
+              name = "password-confirm"
+              type="password"
+              placeholder="••••••••"
+              required="required"
+              minlength="8"
+              maxlength="20"
+            />
+          </div>
+          <div class="form__group">
+            <button id="#sign-up" class="btn-form btn--green">Sign up</button>
+          </div>
+        </form>
+      </div>
+    </main>
+  <script src="../static/js/signup.js"></script>
+  </body>
+</html>
