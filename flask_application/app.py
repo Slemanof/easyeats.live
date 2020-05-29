@@ -83,7 +83,8 @@ def signup():
 def login():
     if request.method == "POST":
         email = request.json.get('email', None)
-        if not re.match('^[A-Za-z0-9@.]*$', email):
+        if not re.match('^[_A-Za-z0-9-\\+]+(\\.[_A-Za-z0-9-]+)*@[A-Za-z0-9-]+(\\.[A-Za-z0-9]+)*(\\.[A-Za-z]{2,})$',
+                        email):
             return jsonify({"msg": "Please, enter a valid email"}), 401
         else:
             user_email = email
