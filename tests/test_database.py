@@ -1,10 +1,10 @@
-import mysql.connector
+import pytest
+
+@pytest.fixture(autouse=True)
+def _mock_db_connection(mocker, db_connection):
+    mocker.patch('db.database.dbc', db_connection)
+    return True
 
 
-def test_db():
-    cnx = mysql.connector.connect(user='script', password='LetMeIn:)123',
-                                  host='127.0.0.1',
-                                  database='restaurant_recommender')
 
-    assert True == cnx.is_connected()
-    cnx.close()
+
