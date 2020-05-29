@@ -67,6 +67,8 @@ or functions pre-defined by the authors listed below:
 * [MarkupSafe](https://github.com/pallets/markupsafe), The Pallets Projects, 2.0.0a1, GitHub.
 * [mysqlclient](https://github.com/PyMySQL/mysqlclient-python), PyMySQL, 1.4.6, GitHub.
 * [Werkzeug](https://github.com/pallets/werkzeug), The Pallets Projects, 1.0.1, GitHub.
+* [Flask_JWT_Extended](https://pypi.org/project/Flask-JWT-Extended/), The Python Package Index (PyPI), 3.24.1, Website.
+* [responses](https://github.com/getsentry/responses), Sentry, 0.10.14, GitHub.
 
 ## References
 
