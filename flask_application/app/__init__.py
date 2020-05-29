@@ -11,6 +11,7 @@ from flask_jwt_extended import (
     get_jwt_identity, set_access_cookies, unset_jwt_cookies,
 )
 
+from app import home_view, login_view, signup_view
 
 app = Flask(__name__)
 jwt = JWTManager(app)
@@ -28,5 +29,3 @@ app.config['MYSQL_PASSWORD'] = ''
 app.config['MYSQL_DB'] = ''
 
 mysql = MySQL(app)
-
-from app import home_view, login_view, signup_view
