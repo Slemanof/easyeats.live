@@ -10,7 +10,7 @@
 [![GitHub issues](https://img.shields.io/github/issues/Slemanof/easyeats.live)](https://github.com/Slemanof/easyeats.live/issues)
 ![Contributors](https://img.shields.io/github/contributors/Slemanof/easyeats.live)
 
-[![Logo](https://github.com/Slemanof/easyeats.live/blob/frontend/Easy%20Eats%20Logos/logo.png)](https://easyeats.live/)
+[![Logo](https://github.com/Slemanof/easyeats.live/blob/develop/flask_application/app/static/img/logo.png)](https://easyeats.live/)
 
 
 
