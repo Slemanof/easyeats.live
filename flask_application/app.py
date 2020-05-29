@@ -1,5 +1,6 @@
 import json
 from datetime import timedelta
+import import_stuff
 
 from flask import Flask, render_template, request, jsonify
 from flask_mysqldb import MySQL
@@ -14,8 +15,9 @@ app = Flask(__name__)
 jwt = JWTManager(app)
 mysql = MySQL(app)
 
+
 app.config['JWT_TOKEN_LOCATION'] = ['cookies']
-app.config['JWT_SECRET_KEY'] = 'super-secret'
+app.config['JWT_SECRET_KEY'] = import_stuff.get_keys()
 app.config['JWT_COOKIE_SECURE'] = False
 app.config['JWT_COOKIE_CSRF_PROTECT'] = False
 app.config['JWT_ACCESS_COOKIE_PATH'] = '/home'
