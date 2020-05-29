@@ -74,10 +74,9 @@ if (!window.location.href.includes(searchAddress.name)) {
   searchAddress.value = '';
 }
 
-//document.querySelector('.btn-logout').addEventListener('click', () => {
-//  localStorage.clear();
-//});
-
+document.querySelector('.btn-logout').addEventListener('click', () => {
+ localStorage.clear();
+});
 
 document
   .querySelector('.main__filter__body-refresh-btn')
