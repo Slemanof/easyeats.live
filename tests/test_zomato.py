@@ -1,4 +1,5 @@
 import requests
+import requests_mock
 
 
 def test_simple(requests_mock):
